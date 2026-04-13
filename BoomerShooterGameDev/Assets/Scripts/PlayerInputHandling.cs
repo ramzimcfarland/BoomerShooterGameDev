@@ -2,19 +2,19 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerInputHandling : MonoBehaviour
 {
-    [SerializeField] private Weapon weapon;
-    [SerializeField] private CameraController cameraController;
+    [SerializeField] private WeaponCore _weapon;
+    [SerializeField] private CameraController _cameraController;
 
     void OnLook(InputValue value)
     {
-        cameraController.HandleLook(value.Get<Vector2>());
+        _cameraController.HandleLook(value.Get<Vector2>());
     }
 
     void OnFire(InputValue value)
     {
-        if(value.isPressed && weapon != null)
+        if(value.isPressed && _weapon != null)
         {
-            weapon.Fire();
+            _weapon.TryFire();
         }
     }
 }
