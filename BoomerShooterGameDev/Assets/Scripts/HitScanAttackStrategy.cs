@@ -33,16 +33,16 @@ public class HitScanAttackStrategy : IAttackStrategy
                 if (hit.collider.gameObject.CompareTag("Target"))
                 {
                     Debug.Log("hit " + hit.collider.gameObject.name + "!");
-                    Debug.DrawLine(origin, hit.point, Color.green, 1f);
+                    Debug.DrawLine(origin, hit.point, Color.green, 2f);
                 }
                 else
                 {
-                 Debug.DrawLine(origin, origin + direction * _range, Color.red, 1f);   
+                 Debug.DrawLine(origin, origin + direction * _range, Color.red, 2f);   
                 }
             }
             else
         {
-            Debug.DrawLine(origin, origin + direction * _range, Color.red, 1f);
+            Debug.DrawLine(origin, origin + direction * _range, Color.red, 2f);
         }
         }
     }
