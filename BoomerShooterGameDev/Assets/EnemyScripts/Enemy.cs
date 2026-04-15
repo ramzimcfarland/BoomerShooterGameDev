@@ -2,15 +2,19 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private int health = 100;
     private Animator animator;
 
+    private NavMeshAgent navAgent;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
+        navAgent = GetComponent<NavMeshAgent>();
     }
 
     public void TakeDamage(int damage)
@@ -20,11 +24,25 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             animator.SetTrigger("Die");
-            Destroy(gameObject, 2f); // Destroy the enemy after 2 seconds to allow the death animation to play
+            Debug.Log("DIED");
+            Destroy(gameObject, 2f);
         }
         else
         {
             animator.SetTrigger("Hit");
+            Debug.Log("HIT");
+        }
+    }
+
+    private void Update()
+    {
+        if (navAgent.velocity.magnitude > 0.1f)
+        {
+            animator.SetBool("IsWalking", true);
+        }
+        else
+        {
+            animator.SetBool("IsWalking", false);
         }
     }
 }
