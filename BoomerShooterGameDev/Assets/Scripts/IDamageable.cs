@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public interface IDamagable
+public interface IDamageable
 {
-    float currentHealth { get; }
-    float maxHealth { get; }
-    bool isDead { get; }
+    float CurrentHealth { get; }
+    float MaxHealth { get; }
+    bool IsDead { get; }
 
     void TakeDamage(float amount);
     void Heal(float amount);

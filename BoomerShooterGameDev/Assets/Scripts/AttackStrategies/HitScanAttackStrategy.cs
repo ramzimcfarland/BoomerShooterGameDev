@@ -1,3 +1,4 @@
+//AI and forums/youtube videos
 using UnityEngine;
 public class HitScanAttackStrategy : IAttackStrategy
 {
@@ -30,8 +31,9 @@ public class HitScanAttackStrategy : IAttackStrategy
 
             if(Physics.Raycast(origin, direction, out RaycastHit hit, _range, _hitMask))
             {
-                if (hit.collider.gameObject.CompareTag("Target"))
+                if (hit.collider.TryGetComponent<IDamageable>(out var target))
                 {
+                    target.TakeDamage(_damage);
                     Debug.Log("hit " + hit.collider.gameObject.name + "!");
                     Debug.DrawLine(origin, hit.point, Color.green, 2f);
                 }
