@@ -1,10 +1,12 @@
 // This script was written with the help of Claude AI
 
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
+    public Transform player;
     public int spawnCount = 3;
     public bool spawnOnStart = false;
     public bool spawnOnTrigger = true; // called externally, e.g. from a trigger volume
@@ -27,8 +29,12 @@ public class EnemySpawner : MonoBehaviour
 
             GameObject enemy = Instantiate(enemyPrefab, transform.position + randomOffset, transform.rotation);
             EnemyAI ai = enemy.GetComponent<EnemyAI>();
+            NavMeshAgent agent = enemy.GetComponent<NavMeshAgent>();
+            agent.avoidancePriority = Random.Range(1, 99); // randomize priority to prevent clumping
+            
             if (ai != null){
                 Debug.Log("activating enemy ai");
+                ai.player = player;
                 ai.Activate();
             }
         }

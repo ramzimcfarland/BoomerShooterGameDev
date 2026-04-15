@@ -2,6 +2,7 @@
 
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class EnemyAI : MonoBehaviour
     public EnemyState currentState = EnemyState.Idle;
 
     public Transform player;
+    private NavMeshAgent agent;
 
     // Adjust as needed
     public float alertRange = 20f;
@@ -17,9 +19,15 @@ public class EnemyAI : MonoBehaviour
     public float moveSpeed = 4f; 
     public bool isActive = false; // set to true with trigger (player enters arena or something)
 
+    //offset for enemies chasing player
+    private Vector3 offset;
+
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
+        agent = GetComponent<NavMeshAgent>();
+
+        offset = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
     }
 
     void Update()
@@ -60,8 +68,18 @@ public class EnemyAI : MonoBehaviour
     void HandleChase(float dist)
     {
         // move toward player
-        Vector3 dir = (player.position - transform.position).normalized;
-        transform.position += dir * moveSpeed * Time.deltaTime;
+        // Vector3 dir = (player.position - transform.position).normalized;
+        // transform.position += dir * moveSpeed * Time.deltaTime;
+
+        if (!isActive) return;
+
+        Vector3 destination = player.position + offset;
+        agent.SetDestination(destination);
+
+        // if (player != null)
+        // {
+        //     agent.SetDestination(player.position);
+        // }
 
         // if player is close, attack
          if (dist < attackRange)
