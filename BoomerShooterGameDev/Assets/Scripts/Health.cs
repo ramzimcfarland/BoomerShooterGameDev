@@ -1,10 +1,11 @@
-// using UnityEngine;
-// using System;
+//This script was made using AI
+using UnityEngine;
+using System;
 
-// public abstract class Health : Monobehaviour, IDamageable
-// {
-//     [SerializeField] private float maxHealth;
-//     [SerializeField] private bool destroyOnDeath = false;
+public class Health : MonoBehaviour, IDamageable
+{
+    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] private bool destroyOnDeath = false;
 
     
 //     public event Action OnDeath;
@@ -24,8 +25,31 @@
 //         _currentHealth = maxHealth;
 //     }
 
-//     public void TakeDamage(float damage)
-//     {
-        
-//     }
-// }
+    public void TakeDamage(float damage)
+    {
+        if (_isDead || damage <= 0f) return;
+
+        _currentHealth = Mathf.Clamp(_currentHealth - damage, 0f, maxHealth);
+        OnDamageTaken?.Invoke(damage);
+        OnHealthChanged?.Invoke(_currentHealth, maxHealth);
+
+        if (_currentHealth <= 0f) Die();
+    }
+    public void Heal(float amount)
+    {
+        if (_isDead || amount <= 0f) return;
+
+        _currentHealth = Mathf.Clamp(_currentHealth + amount, 0f, maxHealth);
+        OnHealed?.Invoke(amount);
+        OnHealthChanged?.Invoke(_currentHealth, maxHealth);
+    }
+
+    private void Die()
+    {
+        _isDead = true;
+        OnDeath?.Invoke();
+
+        if (destroyOnDeath) Destroy(gameObject);
+    }
+    
+}

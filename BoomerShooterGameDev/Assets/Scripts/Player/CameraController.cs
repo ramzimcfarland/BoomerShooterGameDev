@@ -1,3 +1,5 @@
+//forums helped me to understand important things such as locking the x-rotation and what
+//a "normal feeling sensitivity would be
 using UnityEngine;
 using UnityEngine.InputSystem;
 

@@ -1,15 +1,35 @@
 // This script was written based off of this Youtube tutorial: https://www.youtube.com/watch?v=Mcs7Ykxe6Ko
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private int health = 100;
+    private Health _health;
     private Animator animator;
 
     private NavMeshAgent navAgent;
+
+    private void Awake()
+    {
+        _health = GetComponent<Health>();
+        _health.OnDamageTaken += HandleDamageTaken;
+        _health.OnDeath += HandleDeath;
+    }
+    private void OnDestroy()
+    {
+        _health.OnDamageTaken -= HandleDamageTaken;
+        _health.OnDeath -= HandleDeath;
+    }
+
+    private void HandleDamageTaken(float damage)
+    {
+        Debug.Log($"Enemy took {damage} damage!");
+    }
+
+    private void HandleDeath()
+    {
+        Debug.Log("Enemy died!");
+    }
 
     private void Start()
     {
@@ -17,22 +37,22 @@ public class Enemy : MonoBehaviour
         navAgent = GetComponent<NavMeshAgent>();
     }
 
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
+    // public void TakeDamage(int damage)
+    // {
+    //     health -= damage;
 
-        if (health <= 0)
-        {
-            animator.SetTrigger("Die");
-            Debug.Log("DIED");
-            Destroy(gameObject, 2f);
-        }
-        else
-        {
-            animator.SetTrigger("Hit");
-            Debug.Log("HIT");
-        }
-    }
+    //     if (health <= 0)
+    //     {
+    //         animator.SetTrigger("Die");
+    //         Debug.Log("DIED");
+    //         Destroy(gameObject, 2f);
+    //     }
+    //     else
+    //     {
+    //         animator.SetTrigger("Hit");
+    //         Debug.Log("HIT");
+    //     }
+    // }
 
     private void Update()
     {
