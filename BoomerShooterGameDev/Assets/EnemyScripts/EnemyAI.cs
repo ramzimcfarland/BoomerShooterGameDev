@@ -7,7 +7,7 @@ public class EnemyAI : MonoBehaviour
 {
     public enum  EnemyState { Idle, Chase, Attack }
     public EnemyState currentState = EnemyState.Idle;
-
+    [SerializeField] private WeaponCore _weapon;
     public Transform player;
 
     // Adjust as needed
@@ -74,6 +74,7 @@ public class EnemyAI : MonoBehaviour
         if (dist < attackRange)
         {
             currentState = EnemyState.Attack;
+            _weapon.TryFire();
             Debug.Log("Enemy Attacks!"); // replace with actual attack logic
         }
         else 
