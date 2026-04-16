@@ -19,6 +19,9 @@ public class EnemyAI : MonoBehaviour
     public float moveSpeed = 4f; 
     public bool isActive = false; // set to true with trigger (player enters arena or something)
 
+    public float attackCooldown = 1.5f;
+    float lastAttackTime;
+
     //offset for enemies chasing player
     private Vector3 offset;
 
@@ -49,6 +52,19 @@ public class EnemyAI : MonoBehaviour
         // transform.forward = dir;
     }
 
+    bool CanSeePlayer()
+    {
+        Vector3 eyeHeight = transform.position + Vector3.up * 1f; // adjust height
+    Vector3 playerChest = player.position + Vector3.up * 1f;
+    Vector3 dir = playerChest - eyeHeight;
+
+    if (Physics.Raycast(eyeHeight, dir, out RaycastHit hit))
+            return hit.collider.CompareTag("Player");
+        return false;
+    }
+
+    bool CanAttack() => Time.time - lastAttackTime > attackCooldown;
+
     void HandleIdle(float dist)
     {
         if (!isActive) return;
@@ -58,7 +74,7 @@ public class EnemyAI : MonoBehaviour
         transform.forward = Vector3.Lerp(transform.forward, dir, Time.deltaTime * 5f);
         
         // transition to chase if player is in range
-        if (dist < alertRange)
+        if (dist < alertRange && CanSeePlayer())
         {
              currentState = EnemyState.Chase;
         }
@@ -67,14 +83,19 @@ public class EnemyAI : MonoBehaviour
 
     void HandleChase(float dist)
     {
-        // move toward player
-        // Vector3 dir = (player.position - transform.position).normalized;
-        // transform.position += dir * moveSpeed * Time.deltaTime;
 
         if (!isActive) return;
 
+        // move toward player
         Vector3 destination = player.position + offset;
         agent.SetDestination(destination);
+
+        //for if we want to have enemies that only chase if they can see the player, but it can lead to weird behavior where they get stuck on geometry and can't find a path to the player
+        // if (CanSeePlayer())
+        // {   
+        //     Vector3 destination = player.position + offset;
+        //     agent.SetDestination(destination);
+        // }
 
         // if (player != null)
         // {
@@ -88,13 +109,19 @@ public class EnemyAI : MonoBehaviour
 
     void HandleAttack(float dist)
     {
+        agent.ResetPath(); // stop moving
+
         // stop moving and attack
-        if (dist < attackRange)
+        if (dist > attackRange) 
         {
-            currentState = EnemyState.Attack;
-            Debug.Log("Enemy Attacks!"); // replace with actual attack logic
-        }
-        else 
             currentState = EnemyState.Chase;
+            return;
+        }
+        if (CanSeePlayer() && CanAttack())
+        {
+            Debug.Log("Enemy Attacks!"); // replace with actual attack logic
+            lastAttackTime = Time.time;
+        }
+
     }
 }
