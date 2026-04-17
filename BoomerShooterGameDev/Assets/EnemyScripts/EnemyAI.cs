@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
 {
     public enum  EnemyState { Idle, Chase, Attack }
     public EnemyState currentState = EnemyState.Idle;
-
+    [SerializeField] private WeaponCore _weapon;
     public Transform player;
     private NavMeshAgent agent;
 
@@ -114,14 +114,19 @@ public class EnemyAI : MonoBehaviour
         // stop moving and attack
         if (dist > attackRange) 
         {
+            currentState = EnemyState.Attack;
+            _weapon.TryFire();
+            Debug.Log("Enemy Attacks!"); // replace with actual attack logic
+        }
+        else 
             currentState = EnemyState.Chase;
             return;
         }
-        if (CanSeePlayer() && CanAttack())
-        {
-            Debug.Log("Enemy Attacks!"); // replace with actual attack logic
-            lastAttackTime = Time.time;
-        }
+    //     if (CanSeePlayer() && CanAttack())
+    //     {
+    //         Debug.Log("Enemy Attacks!"); // replace with actual attack logic
+    //         lastAttackTime = Time.time;
+    //     }
 
-    }
+    // }
 }

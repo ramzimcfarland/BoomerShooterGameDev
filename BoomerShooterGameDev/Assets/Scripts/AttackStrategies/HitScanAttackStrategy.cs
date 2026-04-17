@@ -6,7 +6,7 @@ public class HitScanAttackStrategy : IAttackStrategy
     private readonly float _damage;
     private readonly int _pelletCount;
     private readonly float _spreadAngle;
-    private readonly LayerMask _hitMask;  
+    private readonly LayerMask _hitMask;
 
     public HitScanAttackStrategy(float range, float damage, LayerMask hitMask,
     int pelletCount, float spreadAngle)

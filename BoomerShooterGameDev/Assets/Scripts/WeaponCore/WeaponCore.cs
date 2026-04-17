@@ -5,7 +5,7 @@ using System;
 public class WeaponCore : MonoBehaviour
 {
     [SerializeField] private Transform _muzzleTransform;
-    [SerializeField] private float _fireRate = 10f;
+    [SerializeField] protected float _fireRate = 10f;
     [SerializeField] private int _damage = 10;
 
     public event Action     OnFire;
