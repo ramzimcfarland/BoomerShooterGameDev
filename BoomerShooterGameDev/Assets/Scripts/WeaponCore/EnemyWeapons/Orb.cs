@@ -11,10 +11,7 @@ public class Orb : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.collider.TryGetComponent<IDamageable>(out var target))
-        {
             target.TakeDamage(_damage);
-        }
-
         Destroy(gameObject);
     }
 }

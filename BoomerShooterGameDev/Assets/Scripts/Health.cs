@@ -8,22 +8,22 @@ public class Health : MonoBehaviour, IDamageable
     [SerializeField] private bool destroyOnDeath = false;
 
     
-//     public event Action OnDeath;
-//     public event Action<float> OnDamageTaken;
-//     public event Action<float, float> OnHealthChanged;
-//     public event Action<float> OnHealed;
+    public event Action OnDeath;
+    public event Action<float> OnDamageTaken;
+    public event Action<float, float> OnHealthChanged;
+    public event Action<float> OnHealed;
 
-//     private float _currentHealth;
-//     private bool _isDead;
+    private float _currentHealth;
+    private bool _isDead;
 
-//     public float CurrentHealth => _currentHealth;
-//     public float MaxHealth => maxHealth;
-//     public bool IsDead => _isDead;
+    public float CurrentHealth => _currentHealth;
+    public float MaxHealth => maxHealth;
+    public bool IsDead => _isDead;
 
-//     private void Awake()
-//     {
-//         _currentHealth = maxHealth;
-//     }
+    private void Awake()
+    {
+        _currentHealth = maxHealth;
+    }
 
     public void TakeDamage(float damage)
     {
@@ -32,6 +32,8 @@ public class Health : MonoBehaviour, IDamageable
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0f, maxHealth);
         OnDamageTaken?.Invoke(damage);
         OnHealthChanged?.Invoke(_currentHealth, maxHealth);
+        Debug.Log($"{gameObject} took {damage} damage!");
+
 
         if (_currentHealth <= 0f) Die();
     }
@@ -48,6 +50,8 @@ public class Health : MonoBehaviour, IDamageable
     {
         _isDead = true;
         OnDeath?.Invoke();
+        Debug.Log($"{gameObject} fuckin' died");
+
 
         if (destroyOnDeath) Destroy(gameObject);
     }

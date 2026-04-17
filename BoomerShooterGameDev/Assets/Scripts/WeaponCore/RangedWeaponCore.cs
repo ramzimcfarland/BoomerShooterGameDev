@@ -18,13 +18,13 @@ public abstract class RangedWeaponCore : WeaponCore
 
     public new void TryFire()
     {
-        if (IsReloading || AmmoInMagazine <= 0) return;
+        //if (IsReloading || AmmoInMagazine <= 0) return;
         base.TryFire();
-        AmmoInMagazine--;
-        OnAmmoChanged?.Invoke();
+        //AmmoInMagazine--;
+       // OnAmmoChanged?.Invoke();
 
-        if (AmmoInMagazine == 0)
-            StartCoroutine(ReloadRoutine());
+        // if (AmmoInMagazine == 0)
+            // StartCoroutine(ReloadRoutine());
     }
 
     public void TryReload()
