@@ -10,7 +10,7 @@ public class EnemyOrbWeapon : EnemyRangedCore
         SetAttackStrategy(new ProjectileAttackStrategy(
             damage: 15f,
             projectilePrefab: _projectilePrefab,
-            travelSpeed: 10f,
+            travelSpeed: 1f,
             projectileLifetime: 3f));
     }
 }
