@@ -1,3 +1,4 @@
+//AI and forums/youtube videos
 using UnityEngine;
 public class HitScanAttackStrategy : IAttackStrategy
 {
@@ -5,7 +6,7 @@ public class HitScanAttackStrategy : IAttackStrategy
     private readonly float _damage;
     private readonly int _pelletCount;
     private readonly float _spreadAngle;
-    private readonly LayerMask _hitMask;  
+    private readonly LayerMask _hitMask;
 
     public HitScanAttackStrategy(float range, float damage, LayerMask hitMask,
     int pelletCount, float spreadAngle)
@@ -30,8 +31,9 @@ public class HitScanAttackStrategy : IAttackStrategy
 
             if(Physics.Raycast(origin, direction, out RaycastHit hit, _range, _hitMask))
             {
-                if (hit.collider.gameObject.CompareTag("Target"))
+                if (hit.collider.TryGetComponent<IDamageable>(out var target))
                 {
+                    target.TakeDamage(_damage);
                     Debug.Log("hit " + hit.collider.gameObject.name + "!");
                     Debug.DrawLine(origin, hit.point, Color.green, 2f);
                 }

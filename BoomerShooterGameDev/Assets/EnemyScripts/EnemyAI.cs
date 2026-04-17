@@ -1,6 +1,5 @@
 // This script was written with the help of Claude AI
 
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,7 +7,7 @@ public class EnemyAI : MonoBehaviour
 {
     public enum  EnemyState { Idle, Chase, Attack }
     public EnemyState currentState = EnemyState.Idle;
-
+    [SerializeField] private RangedWeaponCore _weapon;
     public Transform player;
     private NavMeshAgent agent;
 
@@ -55,12 +54,12 @@ public class EnemyAI : MonoBehaviour
     bool CanSeePlayer()
     {
         Vector3 eyeHeight = transform.position + Vector3.up * 1f; // adjust height
-    Vector3 playerChest = player.position + Vector3.up * 1f;
-    Vector3 dir = playerChest - eyeHeight;
+        Vector3 playerChest = player.position + Vector3.up * 1f;
+        Vector3 dir = playerChest - eyeHeight;
 
-    if (Physics.Raycast(eyeHeight, dir, out RaycastHit hit))
-            return hit.collider.CompareTag("Player");
-        return false;
+        if (Physics.Raycast(eyeHeight, dir, out RaycastHit hit))
+                return hit.collider.CompareTag("Player");
+            return false;
     }
 
     bool CanAttack() => Time.time - lastAttackTime > attackCooldown;
@@ -112,16 +111,17 @@ public class EnemyAI : MonoBehaviour
         agent.ResetPath(); // stop moving
 
         // stop moving and attack
-        if (dist > attackRange) 
+        if (dist > attackRange)
         {
             currentState = EnemyState.Chase;
             return;
         }
-        if (CanSeePlayer() && CanAttack())
+        if (CanAttack() && CanSeePlayer())
         {
-            Debug.Log("Enemy Attacks!"); // replace with actual attack logic
             lastAttackTime = Time.time;
+            currentState = EnemyState.Attack;
+            _weapon.TryFire();
         }
-
     }
 }
+

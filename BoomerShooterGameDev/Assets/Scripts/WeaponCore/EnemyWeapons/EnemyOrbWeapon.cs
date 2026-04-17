@@ -1,0 +1,16 @@
+using UnityEngine;
+
+public class EnemyOrbWeapon : RangedWeaponCore
+{
+    [SerializeField] private  GameObject _projectilePrefab;
+    [SerializeField] private LayerMask _layerMask;
+
+    private void Awake()
+    {
+        SetAttackStrategy(new ProjectileAttackStrategy(
+            damage: 15f,
+            projectilePrefab: _projectilePrefab,
+            travelSpeed: 5f,
+            projectileLifetime: 3f));
+    }
+}
