@@ -1,6 +1,7 @@
 //This script was made using AI
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour, IDamageable
 {
@@ -51,6 +52,7 @@ public class Health : MonoBehaviour, IDamageable
         _isDead = true;
         OnDeath?.Invoke();
         Debug.Log($"{gameObject} fuckin' died");
+
 
 
         if (destroyOnDeath) Destroy(gameObject);
