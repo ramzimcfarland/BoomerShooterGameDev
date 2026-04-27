@@ -1,5 +1,6 @@
 // This script was written with the help of Claude AI
 
+using System.IO;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -120,8 +121,15 @@ public class EnemyAI : MonoBehaviour
         {
             lastAttackTime = Time.time;
             currentState = EnemyState.Attack;
+            Aim();
             _weapon.TryFire();
+            Debug.Log("Enemy attempted to attack");
         }
+    }
+    void Aim()
+    {
+        Vector3 direction = (player.position - _weapon.MuzzleTransform.position).normalized;
+        _weapon.MuzzleTransform.rotation = Quaternion.LookRotation(direction);
     }
 }
 
