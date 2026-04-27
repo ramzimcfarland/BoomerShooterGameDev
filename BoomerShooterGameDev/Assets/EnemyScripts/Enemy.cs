@@ -58,11 +58,11 @@ public class Enemy : MonoBehaviour
     {
         if (navAgent.velocity.magnitude > 0.1f)
         {
-            animator.SetBool("IsWalking", true);
+            //animator.SetBool("IsWalking", true);
         }
         else
         {
-            animator.SetBool("IsWalking", false);
+            //animator.SetBool("IsWalking", false);
         }
     }
 }

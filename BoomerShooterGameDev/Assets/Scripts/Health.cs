@@ -33,6 +33,8 @@ public class Health : MonoBehaviour, IDamageable
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0f, maxHealth);
         OnDamageTaken?.Invoke(damage);
         OnHealthChanged?.Invoke(_currentHealth, maxHealth);
+        if(gameObject.CompareTag("Player"))
+            HUDManager.Instance?.UpdateHealth(_currentHealth); // is updating enemy health on the player HUD
         Debug.Log($"{gameObject} took {damage} damage!");
 
 

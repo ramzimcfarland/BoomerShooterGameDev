@@ -87,7 +87,8 @@ public class EnemyAI : MonoBehaviour
 
         // move toward player
         Vector3 destination = player.position + offset;
-        agent.SetDestination(destination);
+        if (agent.isOnNavMesh)
+            agent.SetDestination(destination);
 
         //for if we want to have enemies that only chase if they can see the player, but it can lead to weird behavior where they get stuck on geometry and can't find a path to the player
         // if (CanSeePlayer())
@@ -108,7 +109,8 @@ public class EnemyAI : MonoBehaviour
 
     void HandleAttack(float dist)
     {
-        agent.ResetPath(); // stop moving
+        if (agent.isOnNavMesh)
+            agent.ResetPath(); // stop moving
 
         // stop moving and attack
         if (dist > attackRange)
