@@ -18,7 +18,7 @@ public class WeaponCore : MonoBehaviour
 
     public void SetAttackStrategy(IAttackStrategy strategy) => AttackStrategy = strategy;
 
-    public void TryFire()
+    public virtual void TryFire()
     {
         //if (!IsEquipped)               return;
         if (AttackStrategy == null)      return;

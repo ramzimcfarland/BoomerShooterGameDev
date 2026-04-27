@@ -7,6 +7,7 @@ public class EnemyOrbWeapon : RangedWeaponCore
 
     private void Awake()
     {
+        base.Awake();
         SetAttackStrategy(new ProjectileAttackStrategy(
             damage: 15f,
             projectilePrefab: _projectilePrefab,

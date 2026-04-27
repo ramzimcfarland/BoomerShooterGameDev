@@ -15,6 +15,10 @@ public class PlayerInputHandling : MonoBehaviour
         if(value.isPressed && _weapon != null)
         {
             _weapon.TryFire();
+            if (_weapon is RangedWeaponCore ranged)
+            {
+                Debug.Log($"Ammo: {ranged.AmmoInMagazine}");
+            }
         }
     }
 }

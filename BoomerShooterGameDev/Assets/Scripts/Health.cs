@@ -1,7 +1,6 @@
 //This script was made using AI
 using UnityEngine;
 using System;
-using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour, IDamageable
 {

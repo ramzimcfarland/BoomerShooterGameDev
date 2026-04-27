@@ -6,6 +6,7 @@ public class Shotgun : RangedWeaponCore
 
     private void Awake()
     {
+        base.Awake();
         SetAttackStrategy(new HitScanAttackStrategy(
             range: 20f,
             damage: 15f,

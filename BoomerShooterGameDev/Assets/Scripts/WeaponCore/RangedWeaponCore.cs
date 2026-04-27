@@ -1,6 +1,7 @@
 //AI
 using UnityEngine;
 using System;
+using System.Collections;
 
 public abstract class RangedWeaponCore : WeaponCore
 {
@@ -14,17 +15,17 @@ public abstract class RangedWeaponCore : WeaponCore
     public event Action OnReloadStart;
     public event Action OnReloadComplete;
 
-    private void Awake() => AmmoInMagazine = _magazineSize;
+    protected void Awake() => AmmoInMagazine = _magazineSize;
 
-    public new void TryFire()
+    public override void TryFire()
     {
-        //if (IsReloading || AmmoInMagazine <= 0) return;
+        if (IsReloading || AmmoInMagazine <= 0) return;
         base.TryFire();
-        //AmmoInMagazine--;
-       // OnAmmoChanged?.Invoke();
+        AmmoInMagazine--;
+        OnAmmoChanged?.Invoke();
 
-        // if (AmmoInMagazine == 0)
-            // StartCoroutine(ReloadRoutine());
+        if (AmmoInMagazine == 0)
+            StartCoroutine(ReloadRoutine());
     }
 
     public void TryReload()
@@ -33,8 +34,9 @@ public abstract class RangedWeaponCore : WeaponCore
             StartCoroutine(ReloadRoutine());
     }
 
-    private System.Collections.IEnumerator ReloadRoutine()
+    private IEnumerator ReloadRoutine()
     {
+        Debug.Log("Is Reloading");
         IsReloading = true;
         OnReloadStart?.Invoke();
 
