@@ -34,6 +34,7 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
+        if (player == null) return;
         float dist = Vector3.Distance(transform.position, player.position);
 
         switch (currentState)
