@@ -8,7 +8,8 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private float sensitivity = .1f;
     private float xRotation = 0f;
-[SerializeField] private Transform player;
+    [SerializeField] private Transform player;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
