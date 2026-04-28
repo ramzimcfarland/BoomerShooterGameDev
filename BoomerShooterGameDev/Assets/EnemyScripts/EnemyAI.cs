@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
 {
     public enum  EnemyState { Idle, Chase, Attack }
     public EnemyState currentState = EnemyState.Idle;
-    [SerializeField] private RangedWeaponCore _weapon;
+    [SerializeField] private WeaponCore _weapon;
     public Transform player;
     private NavMeshAgent agent;
 
@@ -123,10 +123,10 @@ public class EnemyAI : MonoBehaviour
             currentState = EnemyState.Attack;
             Aim();
             _weapon.TryFire();
-            Debug.Log("Enemy attempted to attack");
         }
     }
-    void Aim()
+    void Aim() //rotate the MuzzleTransform to be pointing in the direciton of player
+    //Used before firing
     {
         Vector3 direction = (player.position - _weapon.MuzzleTransform.position).normalized;
         _weapon.MuzzleTransform.rotation = Quaternion.LookRotation(direction);
