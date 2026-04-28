@@ -4,7 +4,7 @@ public class Shotgun : RangedWeaponCore
 {
     [SerializeField] private LayerMask _hitMask;
 
-    private void Awake()
+    protected override void Awake()
     {
         base.Awake();
         SetAttackStrategy(new HitScanAttackStrategy(

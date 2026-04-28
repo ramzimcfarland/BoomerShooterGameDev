@@ -32,6 +32,37 @@ Transform:
   - {fileID: 4034913284939687699}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7906187472480602843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8718569243103527800}
+  m_Layer: 0
+  m_Name: Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8718569243103527800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7906187472480602843}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.321, y: -0.171, z: 0.69}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1542135650416899036}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9056528420392841195
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e0e1b4f12e911c78851ca01cff9df7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInputHandling
-  _weapon: {fileID: 4351647510166626640}
+  _weapon: {fileID: 0}
   _cameraController: {fileID: 3105247038161842019}
 --- !u!114 &8589400435184616489
 MonoBehaviour:
@@ -262,6 +293,7 @@ GameObject:
   - component: {fileID: 5774164730511809951}
   - component: {fileID: 7483546998411863852}
   - component: {fileID: 3105247038161842019}
+  - component: {fileID: 3809437371404253458}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -282,7 +314,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 831383179558440957}
+  - {fileID: 8718569243103527800}
   m_Father: {fileID: 4034913284939687699}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &5774164730511809951
@@ -358,76 +390,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   sensitivity: 0.1
   player: {fileID: 4034913284939687699}
---- !u!1001 &8314835247534204615
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1542135650416899036}
-    m_Modifications:
-    - target: {fileID: 6540502815859243050, guid: 56afa343726cd06579985981ba5cd3ae, type: 3}
-      propertyPath: m_Name
-      value: DummyWeapon
-      objectReference: {fileID: 0}
-    - target: {fileID: 8713779193889728826, guid: 56afa343726cd06579985981ba5cd3ae, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.341
-      objectReference: {fileID: 0}
-    - target: {fileID: 8713779193889728826, guid: 56afa343726cd06579985981ba5cd3ae, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.139
-      objectReference: {fileID: 0}
-    - target: {fileID: 8713779193889728826, guid: 56afa343726cd06579985981ba5cd3ae, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.87
-      objectReference: {fileID: 0}
-    - target: {fileID: 8713779193889728826, guid: 56afa343726cd06579985981ba5cd3ae, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8713779193889728826, guid: 56afa343726cd06579985981ba5cd3ae, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8713779193889728826, guid: 56afa343726cd06579985981ba5cd3ae, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8713779193889728826, guid: 56afa343726cd06579985981ba5cd3ae, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8713779193889728826, guid: 56afa343726cd06579985981ba5cd3ae, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8713779193889728826, guid: 56afa343726cd06579985981ba5cd3ae, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8713779193889728826, guid: 56afa343726cd06579985981ba5cd3ae, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 56afa343726cd06579985981ba5cd3ae, type: 3}
---- !u!4 &831383179558440957 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8713779193889728826, guid: 56afa343726cd06579985981ba5cd3ae, type: 3}
-  m_PrefabInstance: {fileID: 8314835247534204615}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4351647510166626640 stripped
+--- !u!114 &3809437371404253458
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5692570545646569367, guid: 56afa343726cd06579985981ba5cd3ae, type: 3}
-  m_PrefabInstance: {fileID: 8314835247534204615}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 9108250997499326489}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adf493fd787e2d0f783ba3818cee9eb3, type: 3}
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Shotgun
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
