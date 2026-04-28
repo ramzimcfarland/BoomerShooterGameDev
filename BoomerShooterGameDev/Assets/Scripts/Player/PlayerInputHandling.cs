@@ -21,4 +21,11 @@ public class PlayerInputHandling : MonoBehaviour
             }
         }
     }
+    void OnReload(InputValue value)
+    {
+        if(value.isPressed && _weapon != null && _weapon is RangedWeaponCore ranged)
+        {
+            ranged.TryReload();
+        }
+    }
 }

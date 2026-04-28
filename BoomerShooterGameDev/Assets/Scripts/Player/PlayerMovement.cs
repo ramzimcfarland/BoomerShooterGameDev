@@ -4,9 +4,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 10f;
-    public float jumpPower = 5f;
-    public float gravity = -9.81f;
+    public float speed = 9f;
+    public float jumpPower = 2f;
+    public float gravity = -15f;
     private Vector3 velocity; 
     private CharacterController cc;
 
