@@ -21,8 +21,14 @@ public class HUDManager : MonoBehaviour
         HealthText.text = "Health: " + newHealth.ToString();
     }
 
-    public void UpdateAmmo(int newAmmo)
+    public void UpdateAmmo(int newAmmo, int magazineSize)
     {
-        AmmoText.text = "Ammo: " + newAmmo.ToString();
+        //(PlayerWeaponManager.Instance.CurrentWeapon is RangedWeaponCore ranged ? ranged.MagazineSize.ToString() : "N/A")
+        AmmoText.text = "Ammo: " + newAmmo.ToString() + " / " + magazineSize;
+    }
+
+    public void SetAmmoVisible(bool visible)
+    {
+        AmmoText.gameObject.SetActive(visible);
     }
 }

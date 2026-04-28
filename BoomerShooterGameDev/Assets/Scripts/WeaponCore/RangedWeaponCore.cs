@@ -2,6 +2,7 @@
 using UnityEngine;
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 
 public abstract class RangedWeaponCore : WeaponCore
 {
@@ -10,6 +11,7 @@ public abstract class RangedWeaponCore : WeaponCore
 
     public int  AmmoInMagazine { get; private set; }
     public bool IsReloading { get; private set; }
+
 
     public event Action OnAmmoChanged;
     public event Action OnReloadStart;
@@ -23,6 +25,8 @@ public abstract class RangedWeaponCore : WeaponCore
         base.TryFire();
         AmmoInMagazine--;
         OnAmmoChanged?.Invoke();
+
+        HUDManager.Instance?.UpdateAmmo(AmmoInMagazine, _magazineSize);
 
         if (AmmoInMagazine == 0)
             StartCoroutine(ReloadRoutine());
@@ -46,5 +50,7 @@ public abstract class RangedWeaponCore : WeaponCore
         IsReloading    = false;
         OnAmmoChanged?.Invoke();
         OnReloadComplete?.Invoke();
+
+        HUDManager.Instance?.UpdateAmmo(AmmoInMagazine, _magazineSize);
     }
 }
