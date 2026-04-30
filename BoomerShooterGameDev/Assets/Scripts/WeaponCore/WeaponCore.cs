@@ -8,6 +8,8 @@ public class WeaponCore : MonoBehaviour
     [SerializeField] protected float _fireRate = 10f;
     [SerializeField] private int _damage = 10;
 
+    public Animator _animator;
+
     public event Action     OnFire;
 
     public Transform MuzzleTransform => _muzzleTransform;
