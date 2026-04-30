@@ -27,7 +27,13 @@ public class EnemySpawner : MonoBehaviour
                 Random.Range(-3f, 3f)
             );
 
-            GameObject enemy = Instantiate(enemyPrefab, transform.position + randomOffset, transform.rotation);
+            Vector3 spawnPos = transform.position + randomOffset;
+            if (NavMesh.SamplePosition(spawnPos, out NavMeshHit hit, 5f, NavMesh.AllAreas))
+            {
+                spawnPos = hit.position;
+            }
+
+            GameObject enemy = Instantiate(enemyPrefab, spawnPos, transform.rotation);
             EnemyAI ai = enemy.GetComponent<EnemyAI>();
             NavMeshAgent agent = enemy.GetComponent<NavMeshAgent>();
             agent.avoidancePriority = Random.Range(1, 99); // randomize priority to prevent clumping

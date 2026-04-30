@@ -267,6 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInputHandling
   _weapon: {fileID: 0}
   _cameraController: {fileID: 3105247038161842019}
+  _health: {fileID: 0}
 --- !u!114 &8589400435184616489
 MonoBehaviour:
   m_ObjectHideFlags: 0
