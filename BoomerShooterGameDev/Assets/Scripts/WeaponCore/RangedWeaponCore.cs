@@ -19,14 +19,18 @@ public abstract class RangedWeaponCore : WeaponCore
 
     protected void Awake() => AmmoInMagazine = _magazineSize;
 
+private bool IsPlayerWeapon => GetComponentInParent<PlayerMovement>() != null;
+
     public override void TryFire()
     {
         if (IsReloading || AmmoInMagazine <= 0) return;
         base.TryFire();
         AmmoInMagazine--;
         OnAmmoChanged?.Invoke();
-
-        HUDManager.Instance?.UpdateAmmo(AmmoInMagazine, _magazineSize);
+        
+        // update the ui for player's ammo only
+        if (IsPlayerWeapon)
+            HUDManager.Instance?.UpdateAmmo(AmmoInMagazine, _magazineSize);
 
         if (AmmoInMagazine == 0)
             StartCoroutine(ReloadRoutine());
@@ -51,6 +55,8 @@ public abstract class RangedWeaponCore : WeaponCore
         OnAmmoChanged?.Invoke();
         OnReloadComplete?.Invoke();
 
-        HUDManager.Instance?.UpdateAmmo(AmmoInMagazine, _magazineSize);
+        // update the ui for player's ammo only
+        if (IsPlayerWeapon)
+            HUDManager.Instance?.UpdateAmmo(AmmoInMagazine, _magazineSize);
     }
 }
