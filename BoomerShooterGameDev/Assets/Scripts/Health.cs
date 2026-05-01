@@ -53,6 +53,13 @@ public class Health : MonoBehaviour, IDamageable
         _currentHealth = Mathf.Clamp(_currentHealth + amount, 0f, maxHealth);
         OnHealed?.Invoke(amount);
         OnHealthChanged?.Invoke(_currentHealth, maxHealth);
+
+        Debug.Log($"{gameObject} healed {amount} health!");
+        if(gameObject.CompareTag("Player"))
+        {                           
+            Debug.Log("updating hud for health");
+            HUDManager.Instance?.UpdateHealth(_currentHealth);
+        }   
     }
 
     private void Die()
