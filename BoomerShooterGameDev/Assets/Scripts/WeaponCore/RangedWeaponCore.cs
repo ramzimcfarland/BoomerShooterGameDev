@@ -19,7 +19,7 @@ public abstract class RangedWeaponCore : WeaponCore
     public event Action OnReloadStart;
     public event Action OnReloadComplete;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         AmmoInMagazine = _magazineSize;
         AmmoInventory = _maxInventoryAmmo/2;

@@ -5,7 +5,7 @@ public class EnemyOrbWeapon : RangedWeaponCore
     [SerializeField] private  GameObject _projectilePrefab;
     [SerializeField] private LayerMask _layerMask;
 
-    private void Awake()
+    protected override void Awake()
     {
         base.Awake();
         SetAttackStrategy(new ProjectileAttackStrategy(
