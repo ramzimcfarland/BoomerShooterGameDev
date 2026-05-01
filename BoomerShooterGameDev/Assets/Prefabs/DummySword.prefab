@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 2298605962935553549}
   - component: {fileID: 5272724076804675401}
   - component: {fileID: 3536430629028950754}
+  - component: {fileID: 764703599557991811}
+  - component: {fileID: 6101639309984994428}
+  - component: {fileID: 113044837212740572}
   m_Layer: 0
   m_Name: DummySword
   m_TagString: Untagged
@@ -112,3 +115,58 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.3201715, z: 8.418681}
   m_Center: {x: 2.4406678e-14, y: 0.16008505, z: 3.7093332}
+--- !u!114 &764703599557991811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4594787706793343096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8abd27b10de9819b68600e7376a32b92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sword
+  _muzzleTransform: {fileID: 0}
+  _fireRate: 10
+  _damage: 10
+  _animator: {fileID: 6101639309984994428}
+  _attackCooldown: 0.2
+  _hitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!95 &6101639309984994428
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4594787706793343096}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eccd8eb9c87835b80baa710e9f99ab80, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &113044837212740572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4594787706793343096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc2bc2ba4a4d5df6a8bbf28591e2667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeleeHitDetector
+  _weapon: {fileID: 764703599557991811}

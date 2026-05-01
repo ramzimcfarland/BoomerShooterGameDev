@@ -3,6 +3,8 @@ using UnityEngine;
 public class SwordView : MonoBehaviour
 {   
     [SerializeField] private Sword _sword;
+    [SerializeField] private Animator _animator;
+    private static readonly int AttackTrigger = Animator.StringToHash("Attack");
 
     void Awake()
     {
@@ -12,5 +14,8 @@ public class SwordView : MonoBehaviour
     {
         _sword.OnFire -= HandleFire;
     }
-    private void HandleFire(){}
+    private void HandleFire()
+    {
+        _animator.SetTrigger(AttackTrigger);
+    }
 }
