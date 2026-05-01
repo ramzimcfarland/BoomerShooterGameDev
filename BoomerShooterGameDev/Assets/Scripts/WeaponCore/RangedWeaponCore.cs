@@ -2,7 +2,6 @@
 using UnityEngine;
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 
 public abstract class RangedWeaponCore : WeaponCore
 {

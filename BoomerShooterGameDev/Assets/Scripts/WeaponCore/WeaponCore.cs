@@ -1,4 +1,4 @@
-//AI
+//AI and forums
 using UnityEngine;
 using System;
 
@@ -10,7 +10,7 @@ public class WeaponCore : MonoBehaviour
 
     public Animator _animator;
 
-    public event Action     OnFire;
+    public event Action OnFire;
 
     public Transform MuzzleTransform => _muzzleTransform;
     public int Damage => _damage;
@@ -32,5 +32,6 @@ public class WeaponCore : MonoBehaviour
         AttackStrategy.Execute(this);
         OnFire?.Invoke();
     }
+    public void RaiseOnFire() => OnFire?.Invoke();
 
 }

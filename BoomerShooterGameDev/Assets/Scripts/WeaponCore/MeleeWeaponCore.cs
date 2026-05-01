@@ -4,22 +4,23 @@ using System.Collections;
 
 public abstract class MeleeWeaponCore : WeaponCore
 {
-    private float _radius = 1f;
-    protected virtual void Awake()
+    [SerializeField] private float _attackCooldown = .2f;
+    private bool _isAttacking;
+    private float _nextAttackTime;
+    public override void TryFire()
     {
-        
+        if(_isAttacking) return;
+        if(Time.time < _nextAttackTime) return;
+
+        _nextAttackTime = Time.time + _attackCooldown;
+        _isAttacking = true;
+
+        base.TryFire();
+        StartCoroutine(AttackRoutine());
     }
-
-    public void CheckHit()
+    private IEnumerator AttackRoutine()
     {
-        Collider[] hits = Physics.OverlapSphere(transform.position, _radius);
-
-        foreach(var col in hits)
-        {
-            if (col.TryGetComponent<IDamageable>(out var target))
-            {
-                target.TakeDamage(10f);
-            }
-        }
+        yield return new WaitForSeconds(_attackCooldown);
+        _isAttacking = false;
     }
 }
