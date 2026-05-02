@@ -20,6 +20,8 @@ GameObject:
   - component: {fileID: 6056024283459013942}
   - component: {fileID: 8562405236507163322}
   - component: {fileID: 5874940913263832918}
+  - component: {fileID: 4737462934811314619}
+  - component: {fileID: 70176537456895127}
   m_Layer: 0
   m_Name: CapsuleEnemy
   m_TagString: Enemy
@@ -256,6 +258,7 @@ MonoBehaviour:
   _damage: 10
   _magazineSize: 5
   _reloadTime: 2
+  _maxInventoryAmmo: 90
   _projectilePrefab: {fileID: 6618981301091044701, guid: 69e7208dd51d7d4d5a8a3449830bd00a, type: 3}
   _layerMask:
     serializedVersion: 2
@@ -274,6 +277,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health
   maxHealth: 100
   destroyOnDeath: 1
+--- !u!114 &4737462934811314619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2302169302924666262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41009d2607e14bb4bafab5f72a6e8368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DropHandler
+  dropInventory: {fileID: 70176537456895127}
+  dropRadius: 1
+--- !u!114 &70176537456895127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2302169302924666262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d387bbb6551f9974e989a625f1003ccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDropInventory
+  entries:
+  - itemPrefab: {fileID: 3960841245437731209, guid: 794a9a6730cae804297a4f8e1d94acc1, type: 3}
+    chance: 0.6
+  - itemPrefab: {fileID: 5992015642152107859, guid: 1274475a1067bb649bcb6303f4394712, type: 3}
+    chance: 0.3
 --- !u!1 &2481032483856275552
 GameObject:
   m_ObjectHideFlags: 0

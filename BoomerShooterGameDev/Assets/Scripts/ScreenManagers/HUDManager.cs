@@ -8,7 +8,7 @@ public class HUDManager : MonoBehaviour
     public TMP_Text HealthText;
     public TMP_Text AmmoText;
 
-    // written with Claude AI so UI elements don't destroy on load
+    // Awake() written with Claude AI so UI elements don't destroy on load
     void Awake()
     {
         if (Instance != null) { Destroy(gameObject); return;}
@@ -23,7 +23,6 @@ public class HUDManager : MonoBehaviour
 
     public void UpdateAmmo(int newAmmo, int magazineSize)
     {
-        //(PlayerWeaponManager.Instance.CurrentWeapon is RangedWeaponCore ranged ? ranged.MagazineSize.ToString() : "N/A")
         AmmoText.text = "Ammo: " + newAmmo.ToString() + " / " + magazineSize;
     }
 
