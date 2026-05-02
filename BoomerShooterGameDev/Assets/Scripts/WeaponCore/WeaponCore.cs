@@ -16,7 +16,7 @@ public class WeaponCore : MonoBehaviour
     public int Damage => _damage;
 
     protected IAttackStrategy AttackStrategy { get; private set; }
-    private float _nextFireTime;
+    protected float _nextFireTime;
 
     public void SetAttackStrategy(IAttackStrategy strategy) => AttackStrategy = strategy;
 

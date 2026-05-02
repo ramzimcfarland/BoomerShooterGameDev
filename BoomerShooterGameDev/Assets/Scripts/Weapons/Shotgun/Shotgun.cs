@@ -6,6 +6,7 @@ public class Shotgun : RangedWeaponCore
 
     protected override void Awake()
     {
+        _fireRate = .75f;
         base.Awake();
         SetAttackStrategy(new HitScanAttackStrategy(
             range: 20f,
