@@ -22,6 +22,7 @@ public class HitScanAttackStrategy : IAttackStrategy
 
     public void Execute(WeaponCore weapon)
     {
+        Debug.Log("Firing");
         var origin = weapon.MuzzleTransform.position;
         var forward = weapon.MuzzleTransform.forward;
         

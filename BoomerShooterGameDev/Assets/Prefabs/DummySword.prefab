@@ -131,7 +131,6 @@ MonoBehaviour:
   _muzzleTransform: {fileID: 0}
   _fireRate: 10
   _damage: 10
-  _animator: {fileID: 6101639309984994428}
   _attackCooldown: 0.2
   _hitMask:
     serializedVersion: 2
