@@ -4,7 +4,9 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    private EnemyManager enemyManager;
     private Health _health;
+
     private Animator animator;
 
     private NavMeshAgent navAgent;
@@ -14,6 +16,7 @@ public class Enemy : MonoBehaviour
         _health = GetComponent<Health>();
         _health.OnDamageTaken += HandleDamageTaken;
         _health.OnDeath += HandleDeath;
+        enemyManager = GetComponentInParent<EnemyManager>();
     }
     private void OnDestroy()
     {
@@ -28,6 +31,7 @@ public class Enemy : MonoBehaviour
 
     private void HandleDeath()
     {
+        enemyManager?.HandleEnemyDeath();
         Debug.Log("Enemy died!");
     }
 
