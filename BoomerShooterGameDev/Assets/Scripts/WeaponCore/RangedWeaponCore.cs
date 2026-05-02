@@ -29,8 +29,11 @@ private bool IsPlayerWeapon => GetComponentInParent<PlayerMovement>() != null;
     public override void TryFire()
     {
         if (IsReloading || AmmoInMagazine <= 0) return;
+        if (Time.time < _nextFireTime) return;
+
         base.TryFire();
         AmmoInMagazine--;
+        
         OnAmmoChanged?.Invoke();
         
         // update the ui for player's ammo only

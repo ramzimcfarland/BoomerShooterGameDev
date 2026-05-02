@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ShotgunView : MonoBehaviour
@@ -21,7 +22,22 @@ public class ShotgunView : MonoBehaviour
     }
 
     // private void HandleHit(Vector3 point, Vector3 normal) { /* VFX, sound */ }
-     private void HandleFire()                             { /* muzzle flash */ }
-    // private void HandleEquip()                            { /* draw animation */ }
-    // private void HandleUnequip() 
+     private void HandleFire()
+    {
+        SoundManager.PlaySound(SoundType.SHOTGUNBLAST);
+        StartCoroutine(PlayCockSound());
+    }
+    //  private void HandleEquip()
+    // {
+
+    // }
+    //  private void HandleUnequip()
+    // {
+        
+    // }
+    private IEnumerator PlayCockSound()
+    {
+        yield return new WaitForSeconds(.3f);
+        SoundManager.PlaySound(SoundType.SHOTGUNCOCK);
+    }
 }

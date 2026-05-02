@@ -12,7 +12,10 @@ GameObject:
   - component: {fileID: 2544873393204630864}
   - component: {fileID: 4347754930416598219}
   - component: {fileID: 5706645034951932751}
-  m_Layer: 0
+  - component: {fileID: 6503849230570165867}
+  - component: {fileID: 7049211901981667056}
+  - component: {fileID: 6536201796624932453}
+  m_Layer: 3
   m_Name: EnemyMeleeWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.6109204, y: 0.357, z: 0.4974699}
-  m_LocalScale: {x: 0.038548, y: 1, z: -0.061974}
+  m_LocalScale: {x: 0.038548, y: 1.316, z: -0.061974}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6060721803269848130}
@@ -106,12 +109,59 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.0000001, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6503849230570165867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783894948857416005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d7fb968d2bef846cb7d4a043afcf816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMeleeWeapon
+  _muzzleTransform: {fileID: 0}
+  _fireRate: 10
+  _damage: 10
+  _animator: {fileID: 7400768067249312760}
+  _attackCooldown: 0.5
+  _hitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &7049211901981667056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783894948857416005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc2bc2ba4a4d5df6a8bbf28591e2667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeleeHitDetector
+  _weapon: {fileID: 6503849230570165867}
+--- !u!114 &6536201796624932453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783894948857416005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e36874d73d7112e28878a355e307977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwordView
+  _sword: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!1 &2302169302924666262
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +180,6 @@ GameObject:
   - component: {fileID: 7400768067249312760}
   - component: {fileID: 4664191969524176836}
   - component: {fileID: 6056024283459013942}
-  - component: {fileID: 8562405236507163322}
   - component: {fileID: 5874940913263832918}
   m_Layer: 0
   m_Name: CapsuleEnemy
@@ -317,11 +366,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   currentState: 0
-  _weapon: {fileID: 8562405236507163322}
+  _weapon: {fileID: 6503849230570165867}
   player: {fileID: 0}
   alertRange: 20
   sightRange: 10
-  attackRange: 10
+  attackRange: 3
   moveSpeed: 4
   isActive: 1
   attackCooldown: 1.5
@@ -352,28 +401,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &8562405236507163322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2302169302924666262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a54dc2ff7d16551eb15e8aa260708b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyOrbWeapon
-  _muzzleTransform: {fileID: 0}
-  _fireRate: 10
-  _damage: 10
-  _animator: {fileID: 0}
-  _magazineSize: 5
-  _reloadTime: 2
-  _projectilePrefab: {fileID: 6618981301091044701, guid: 69e7208dd51d7d4d5a8a3449830bd00a, type: 3}
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!114 &5874940913263832918
 MonoBehaviour:
   m_ObjectHideFlags: 0

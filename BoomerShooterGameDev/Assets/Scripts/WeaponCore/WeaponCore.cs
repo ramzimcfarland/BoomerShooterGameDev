@@ -7,22 +7,23 @@ public class WeaponCore : MonoBehaviour
     [SerializeField] private Transform _muzzleTransform;
     [SerializeField] protected float _fireRate = 10f;
     [SerializeField] private int _damage = 10;
-
-    public Animator _animator;
-
     public event Action OnFire;
+    public event Action OnEquip;
+    public event Action OnUnequip;
 
     public Transform MuzzleTransform => _muzzleTransform;
     public int Damage => _damage;
 
     protected IAttackStrategy AttackStrategy { get; private set; }
-    private float _nextFireTime;
+
+    protected float _nextFireTime;
+    public bool IsEquipped { get; private set; }
 
     public void SetAttackStrategy(IAttackStrategy strategy) => AttackStrategy = strategy;
 
     public virtual void TryFire()
     {
-        //if (!IsEquipped)               return;
+        if (!IsEquipped)               return;
         if (AttackStrategy == null)      return;
         if (!AttackStrategy.CanAttack()) return;
         if (Time.time < _nextFireTime)   return;
@@ -33,5 +34,18 @@ public class WeaponCore : MonoBehaviour
         OnFire?.Invoke();
     }
     public void RaiseOnFire() => OnFire?.Invoke();
+    public void Equip()
+    {
+        IsEquipped = true;
+        gameObject.SetActive(true);
+        OnEquip?.Invoke();
+    }
+
+    public void Unequip()
+    {
+        IsEquipped = false;
+        gameObject.SetActive(false);
+        OnUnequip?.Invoke();
+    }
 
 }

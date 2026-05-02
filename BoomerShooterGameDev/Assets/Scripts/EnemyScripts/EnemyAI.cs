@@ -1,6 +1,4 @@
 // This script was written with the help of Claude AI
-
-using System.IO;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,8 +17,6 @@ public class EnemyAI : MonoBehaviour
     public float moveSpeed = 4f; 
     public bool isActive = false; // set to true with trigger (player enters arena or something)
 
-    public float attackCooldown = 1.5f;
-    float lastAttackTime;
 
     //offset for enemies chasing player
     private Vector3 offset;
@@ -64,7 +60,6 @@ public class EnemyAI : MonoBehaviour
             return false;
     }
 
-    bool CanAttack() => Time.time - lastAttackTime > attackCooldown;
 
     void HandleIdle(float dist)
     {
@@ -120,13 +115,23 @@ public class EnemyAI : MonoBehaviour
             currentState = EnemyState.Chase;
             return;
         }
-        if (CanAttack() && CanSeePlayer())
+        if (CanSeePlayer())
         {
-            lastAttackTime = Time.time;
             currentState = EnemyState.Attack;
-            Aim();
+            
+            if (_weapon is RangedWeaponCore)
+            {
+                Aim();
+            }
+
             _weapon.TryFire();
         }
+
+            else
+            {
+                currentState = EnemyState.Chase;
+            }
+
     }
     void Aim() //rotate the MuzzleTransform to be pointing in the direciton of player
     //Used before firing
