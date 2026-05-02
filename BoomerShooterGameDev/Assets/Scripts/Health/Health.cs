@@ -44,6 +44,7 @@ public class Health : MonoBehaviour, IDamageable
             Die();
             if(gameObject.CompareTag("Player"))
                 UIScreenManager.Instance?.HandlePlayerDeath();
+                
         }
     }
     public void Heal(float amount)

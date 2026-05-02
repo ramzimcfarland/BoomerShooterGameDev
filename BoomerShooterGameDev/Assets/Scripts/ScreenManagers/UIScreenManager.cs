@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class UIScreenManager : MonoBehaviour
 {
@@ -13,10 +14,10 @@ public class UIScreenManager : MonoBehaviour
    [SerializeField] private GameObject deathPanel;
    [Header("HUD Panel")]
    [SerializeField] private GameObject hudPanel;
-
-//    [Header("Win")]
-//    [SerializeField] private GameObject winPanel;
-// private bool hasWon = false;
+   [Header("Arena Cleared")]
+   [SerializeField] private GameObject arenaClearedPanel;
+   [Header("Game Won")]
+   [SerializeField] private GameObject gameWonPanel ;
 
     private void Awake()
     {
@@ -39,11 +40,17 @@ public class UIScreenManager : MonoBehaviour
             hudPanel.SetActive(true);
         }
 
-        // if (winPanel != null)
-        // {
-        //     winPanel.SetActive(false);
-        // }
+        if (arenaClearedPanel != null)
+        {
+            arenaClearedPanel.SetActive(false);
+        }
+
+        if (gameWonPanel != null)
+        {
+            gameWonPanel.SetActive(false);
+        }
     }
+    
     private void Update()
     {
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
@@ -87,14 +94,14 @@ public class UIScreenManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         GameState.pause(false);
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void OnBackToMenu()
     {
         Time.timeScale = 1f;
         GameState.pause(false);
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);   
+        SceneManager.LoadScene(0);   
     }
 
     public void HandlePlayerDeath()
@@ -112,6 +119,47 @@ public class UIScreenManager : MonoBehaviour
         }
 
         //unlock cursor when on death screen
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void HandleArenaCleared()
+    {
+        GameState.pause(true);
+        Time.timeScale = 0f;
+        if (arenaClearedPanel != null)
+        {
+            arenaClearedPanel.SetActive(true);
+        }
+
+        if (hudPanel != null)
+        {
+            hudPanel.SetActive(false);
+        }
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void OnNextArena()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void HandleGameWin()
+    {
+        GameState.pause(true);
+        Time.timeScale = 0f;
+        if (gameWonPanel != null)
+        {
+            gameWonPanel.SetActive(true);
+        }
+
+        if (hudPanel != null)
+        {
+            hudPanel.SetActive(false);
+        }
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
