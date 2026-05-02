@@ -1,8 +1,12 @@
+using System;
 using UnityEngine;
 
 public class Shotgun : RangedWeaponCore
 {
     [SerializeField] private LayerMask _hitMask;
+
+    public Action OnUnequip { get; internal set; }
+    public Action OnEquip { get; internal set; }
 
     protected override void Awake()
     {

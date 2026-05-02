@@ -27,8 +27,14 @@ public class ShotgunView : MonoBehaviour
         SoundManager.PlaySound(SoundType.SHOTGUNBLAST);
         StartCoroutine(PlayCockSound());
     }
-    // private void HandleEquip()                            { /* draw animation */ }
-    // private void HandleUnequip() 
+    //  private void HandleEquip()
+    // {
+
+    // }
+    //  private void HandleUnequip()
+    // {
+        
+    // }
     private IEnumerator PlayCockSound()
     {
         yield return new WaitForSeconds(.3f);
