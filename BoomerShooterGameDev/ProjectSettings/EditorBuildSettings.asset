@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Arena1.unity
     guid: 9537a001f9fc9a94889fe51130c58491
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/enemy test scene.unity
     guid: e794490e5aca422448fc49e014dd1b34
+  - enabled: 1
+    path: Assets/Scenes/Arena3.unity
+    guid: 7ff0c8f451257374d916227be9cea14c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
