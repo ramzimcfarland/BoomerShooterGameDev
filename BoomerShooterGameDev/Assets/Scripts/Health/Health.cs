@@ -48,9 +48,6 @@ public class Health : MonoBehaviour, IDamageable
             }
         } 
 
-        Debug.Log($"{gameObject} took {damage} damage!");
-
-
         if (_currentHealth <= 0f) 
         {
             Die();
@@ -72,10 +69,8 @@ public class Health : MonoBehaviour, IDamageable
         OnHealed?.Invoke(amount);
         OnHealthChanged?.Invoke(_currentHealth, maxHealth);
 
-        Debug.Log($"{gameObject} healed {amount} health!");
         if(gameObject.CompareTag("Player"))
         {                           
-            Debug.Log("updating hud for health");
             HUDManager.Instance?.UpdateHealth(_currentHealth);
         }   
     }
@@ -84,7 +79,7 @@ public class Health : MonoBehaviour, IDamageable
     {
         _isDead = true;
         OnDeath?.Invoke();
-        Debug.Log($"{gameObject} fuckin' died");
+        // Debug.Log($"{gameObject} fuckin' died");
 
 
 

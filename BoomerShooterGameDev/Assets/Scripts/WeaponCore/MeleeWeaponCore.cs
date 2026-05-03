@@ -25,6 +25,8 @@ public abstract class MeleeWeaponCore : WeaponCore
         _isAttacking = false;
     }
     public override void Unequip()
+    //Transform positions to reset melee weapon position because of bug when unequipping during
+    //animation
     {
         StopAllCoroutines();
         _isAttacking = false;

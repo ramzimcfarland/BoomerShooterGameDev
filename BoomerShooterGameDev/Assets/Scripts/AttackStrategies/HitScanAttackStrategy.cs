@@ -22,36 +22,31 @@ public class HitScanAttackStrategy : IAttackStrategy
 
     public void Execute(WeaponCore weapon)
     {
-        Debug.Log("Firing");
         var origin = weapon.MuzzleTransform.position;
         var forward = weapon.MuzzleTransform.forward;
         
-        for (int i = 0; i < _pelletCount; i++)
+        for (int i = 0; i < _pelletCount; i++) //For each pellet
         {
+
             Vector3 direction = GetSpreadDirection(forward);
+            
 
             if(Physics.Raycast(origin, direction, out RaycastHit hit, _range, _hitMask))
             {
-                Debug.Log("Hit: " + hit.collider.gameObject.name);
+                //If target is damageable, damage it!
                 if (hit.collider.TryGetComponent<IDamageable>(out var target))
                 {
                     target.TakeDamage(_damage, DamageType.Ranged);
-                    Debug.Log("hit " + hit.collider.gameObject.name + "!");
-                    Debug.DrawLine(origin, hit.point, Color.green, 2f);
                 }
-                else
-                {
-                 Debug.DrawLine(origin, origin + direction * _range, Color.red, 2f);   
-                }
+
             }
-            else
-        {
-            Debug.DrawLine(origin, origin + direction * _range, Color.red, 2f);
-        }
         }
     }
+
     private Vector3 GetSpreadDirection(Vector3 forward)
     {
+        //Create a cone with arc 2x half angle. Gives the z axis (forward) to the pellets
+        //so that they may fly in a random cone.
         if (_spreadAngle == 0f) return forward;
         float halfAngle = _spreadAngle * 0.5f;
         Vector3 randomInCone = new Vector3(

@@ -1,3 +1,4 @@
+//Meant to handle any SFX with the shotgun but primary functionality is setting animation trigger
 using UnityEngine;
 
 public class SwordView : MonoBehaviour

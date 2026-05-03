@@ -1,4 +1,4 @@
-//AI
+//Script heavily influenced by AI
 using UnityEngine;
 using System;
 using System.Collections;
@@ -72,7 +72,6 @@ public abstract class RangedWeaponCore : WeaponCore
         // update the ui for player's ammo only
         if (IsPlayerWeapon)
         {
-            Debug.Log("updating hud for ammo");
             HUDManager.Instance?.UpdateAmmo(AmmoInMagazine, _magazineSize);
         }
     }

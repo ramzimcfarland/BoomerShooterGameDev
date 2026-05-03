@@ -1,3 +1,4 @@
+//Projectiles handle their own damage functionality
 using UnityEngine;
 
 public class Orb : MonoBehaviour

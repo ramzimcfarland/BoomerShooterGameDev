@@ -11,7 +11,9 @@ public class MeleeAttackStrategy : IAttackStrategy
     }
     public bool CanAttack() => true;
 
-    public void Execute(WeaponCore weapon)
+    public void Execute(WeaponCore weapon) 
+    //This script just calls the event because the damage
+    //is handled through the animator and collisions
     {
         weapon.RaiseOnFire();
     }
