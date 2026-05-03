@@ -27,6 +27,7 @@ public class DoorController : MonoBehaviour
     {
         if (!isAnimating)
             StartCoroutine(AnimateDoor(closedPosition));
+            SoundManager.PlaySound(SoundType.DOORBOOM);
     }
 
     public void OpenDoor()
@@ -38,6 +39,7 @@ public class DoorController : MonoBehaviour
     private IEnumerator AnimateDoor(Vector3 targetPosition)
     {
         isAnimating = true;
+        SoundManager.PlaySound(SoundType.DOORCLOSING);
         while (Vector3.Distance(transform.localPosition, targetPosition) > 0.01f)
         {
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, movementSpeed * Time.deltaTime);

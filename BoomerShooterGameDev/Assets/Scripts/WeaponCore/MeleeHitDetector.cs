@@ -13,7 +13,7 @@ public class MeleeHitDetector : MonoBehaviour
         
         if(collision.TryGetComponent<IDamageable>(out var target))
         {
-            target.TakeDamage(_weapon.Damage);
+            target.TakeDamage(_weapon.Damage, DamageType.Melee);
         }
     }
 

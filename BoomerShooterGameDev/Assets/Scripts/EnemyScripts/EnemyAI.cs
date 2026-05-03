@@ -50,6 +50,7 @@ public class EnemyAI : MonoBehaviour
         isActive = true;
         // Vector3 dir = (player.position - transform.position).normalized;
         // transform.forward = dir;
+        SoundManager.PlaySound(SoundType.ENEMYACTIVATION);
     }
 
     bool CanSeePlayer()
@@ -125,6 +126,7 @@ public class EnemyAI : MonoBehaviour
             if (_weapon is RangedWeaponCore ranged)
             {
                 if (ranged.IsReloading) return;
+                SoundManager.PlaySound(SoundType.ENEMYRANGEDATTACK);
                 Aim();
             }
 

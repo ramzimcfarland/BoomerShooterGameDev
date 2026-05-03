@@ -8,6 +8,7 @@ public abstract class MeleeWeaponCore : WeaponCore
     private bool _isAttacking;
     private float _nextAttackTime;
     public override void TryFire()
+    
     {
         if(_isAttacking) return;
         if(Time.time < _nextAttackTime) return;
@@ -22,5 +23,15 @@ public abstract class MeleeWeaponCore : WeaponCore
     {
         yield return new WaitForSeconds(_attackCooldown);
         _isAttacking = false;
+    }
+    public override void Unequip()
+    {
+        StopAllCoroutines();
+        _isAttacking = false;
+        _nextAttackTime = 0f;
+
+        transform.localPosition = Vector3.zero;
+        transform.rotation = Quaternion.identity;
+        base.Unequip();
     }
 }
