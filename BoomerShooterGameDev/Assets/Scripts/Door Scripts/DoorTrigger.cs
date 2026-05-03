@@ -12,8 +12,16 @@ public class DoorTrigger : MonoBehaviour
         if(other.CompareTag("Player") && !hasTriggered)
         {
             hasTriggered = true;
-            doorController.CloseDoor();
-            OnPlayerEnter?.Invoke();
+
+            if (doorController.isOpen){
+                doorController.CloseDoor();
+                OnPlayerEnter?.Invoke();
+            }
+            else
+            {
+                doorController.OpenDoor();
+            }
+            
         }
     }
 
