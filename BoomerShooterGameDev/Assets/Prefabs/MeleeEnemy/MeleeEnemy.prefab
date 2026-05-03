@@ -159,8 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ca6f66a44b808a4e905c9eac404759e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMeleeWeaponView
-  _weapon: {fileID: 0}
-  _animator: {fileID: 0}
+  _weapon: {fileID: 6503849230570165867}
+  _animator: {fileID: 7400768067249312760}
 --- !u!1 &2302169302924666262
 GameObject:
   m_ObjectHideFlags: 0
