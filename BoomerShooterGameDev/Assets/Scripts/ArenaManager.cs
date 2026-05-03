@@ -5,14 +5,17 @@ public static class ArenaManager
     public static int currentArena = 1;
     public static int maxArena = 3;
 
+    [SerializeField]private static LightTrigger lightTrigger;
+
     // public static event Action OnArenaCleared;
     // public static event Action OnGameWin;
 
     public static void ClearArena()
     {
         currentArena++;
-        if (currentArena > maxArena)
+        if (LightTrigger.isTriggered)
         {
+            Debug.Log("won!");
             //OnGameWin?.Invoke();
             UIScreenManager.Instance?.HandleGameWin();
             Debug.Log($"Game Won!");

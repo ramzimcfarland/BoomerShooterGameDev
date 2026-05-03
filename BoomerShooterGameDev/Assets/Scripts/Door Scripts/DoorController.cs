@@ -14,9 +14,12 @@ public class DoorController : MonoBehaviour
     private Vector3 closedPosition;
 
     private bool isAnimating = false;
+    public bool isOpen;
 
     void Start()
     {
+        isOpen = openAtStart;
+
         closedPosition = new Vector3(transform.localPosition.x, transform.localPosition.y - closedYOffset, transform.localPosition.z);
         openPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + openYOffset, transform.localPosition.z);
 
@@ -28,12 +31,14 @@ public class DoorController : MonoBehaviour
         if (!isAnimating)
             StartCoroutine(AnimateDoor(closedPosition));
             SoundManager.PlaySound(SoundType.DOORBOOM);
+        isOpen = false;
     }
 
     public void OpenDoor()
     {
         if (!isAnimating)
             StartCoroutine(AnimateDoor(openPosition));
+        isOpen = true;
     }
 
     private IEnumerator AnimateDoor(Vector3 targetPosition)

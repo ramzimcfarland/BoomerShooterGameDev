@@ -4,6 +4,8 @@ public class EnemyOrbWeapon : RangedWeaponCore
 {
     [SerializeField] private  GameObject _projectilePrefab;
     [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private float travelSpeed = 5f;
+    [SerializeField] private float projectileLifetime = 3f;
 
     protected override void Awake()
     {
@@ -11,7 +13,7 @@ public class EnemyOrbWeapon : RangedWeaponCore
         SetAttackStrategy(new ProjectileAttackStrategy(
             damage: 15f,
             projectilePrefab: _projectilePrefab,
-            travelSpeed: 5f,
-            projectileLifetime: 3f));
+            travelSpeed: travelSpeed,
+            projectileLifetime: projectileLifetime));
     }
 }
