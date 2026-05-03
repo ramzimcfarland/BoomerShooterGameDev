@@ -18,6 +18,7 @@ public class DoorController : MonoBehaviour
 
     void Start()
     {
+        SoundManager.PlayMusic(MusicType.WAITINGROOM);
         isOpen = openAtStart;
 
         closedPosition = new Vector3(transform.localPosition.x, transform.localPosition.y - closedYOffset, transform.localPosition.z);
@@ -31,6 +32,8 @@ public class DoorController : MonoBehaviour
         if (!isAnimating)
             StartCoroutine(AnimateDoor(closedPosition));
             SoundManager.PlaySound(SoundType.DOORBOOM);
+            SoundManager.StopMusic();
+            SoundManager.PlayMusic(MusicType.GAMEPLAY);
         isOpen = false;
     }
 

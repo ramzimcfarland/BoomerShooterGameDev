@@ -461,6 +461,7 @@ MonoBehaviour:
   closedYOffset: 12
   movementSpeed: 5
   openAtStart: 1
+  isOpen: 0
 --- !u!1 &32243311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,6 +1350,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2481032483856275552, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2508494032562117025, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 1139837779}
+    - target: {fileID: 2508494032562117025, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 1091322008}
     - target: {fileID: 2538089436301500841, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -1597,6 +1610,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2481032483856275552, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2508494032562117025, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 673355938}
+    - target: {fileID: 2508494032562117025, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 1658250210}
     - target: {fileID: 2538089436301500841, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -1625,6 +1650,7 @@ GameObject:
   - component: {fileID: 228728140}
   - component: {fileID: 228728139}
   - component: {fileID: 228728138}
+  - component: {fileID: 228728141}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -1687,6 +1713,9 @@ MonoBehaviour:
   - name: PLAYERHIT
     sounds:
     - {fileID: 8300000, guid: ec2525069ad5a200894d9ea31f7c3e62, type: 3}
+  musicList:
+  - {fileID: 8300000, guid: 2b45e254e81710324ab1b3a5708c9ce4, type: 3}
+  - {fileID: 8300000, guid: 5a4669898b842bbf8a412740db415b35, type: 3}
 --- !u!82 &228728139
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1799,6 +1828,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &228728141
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228728137}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &248917482
 GameObject:
   m_ObjectHideFlags: 0
@@ -2717,6 +2843,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1515ff55d76f1cf48bbb174e22a0b9e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
+--- !u!95 &316304268 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7400768067249312760, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+  m_PrefabInstance: {fileID: 1058717698}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &333600147
 GameObject:
   m_ObjectHideFlags: 0
@@ -3301,6 +3432,10 @@ PrefabInstance:
     - target: {fileID: 2481032483856275552, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481032483856275552, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2538089436301500841, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
       propertyPath: m_Layer
@@ -4114,6 +4249,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2481032483856275552, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 2538089436301500841, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -4272,6 +4411,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 492710633}
   m_CullTransparentMesh: 1
+--- !u!114 &492983670 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6503849230570165867, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+  m_PrefabInstance: {fileID: 556663321}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d7fb968d2bef846cb7d4a043afcf816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMeleeWeapon
 --- !u!1 &496715028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4635,6 +4785,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2481032483856275552, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2508494032562117025, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 492983670}
+    - target: {fileID: 2508494032562117025, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 1656195392}
     - target: {fileID: 2538089436301500841, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -5168,6 +5330,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1858065059313855361, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
   m_PrefabInstance: {fileID: 703827329}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &673355938 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6503849230570165867, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+  m_PrefabInstance: {fileID: 219688348}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d7fb968d2bef846cb7d4a043afcf816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMeleeWeapon
 --- !u!1 &677526985
 GameObject:
   m_ObjectHideFlags: 0
@@ -5349,6 +5522,17 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &691441270 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6503849230570165867, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+  m_PrefabInstance: {fileID: 1058717698}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d7fb968d2bef846cb7d4a043afcf816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMeleeWeapon
 --- !u!1 &698770050
 GameObject:
   m_ObjectHideFlags: 0
@@ -5689,6 +5873,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2481032483856275552, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 2538089436301500841, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -5901,6 +6089,10 @@ PrefabInstance:
     - target: {fileID: 2481032483856275552, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481032483856275552, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2538089436301500841, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
       propertyPath: m_Layer
@@ -6556,6 +6748,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4034913284939687699, guid: e0daa521dd418c3d395417c59ad22f88, type: 3}
   m_PrefabInstance: {fileID: 1054414601}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &942825283 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6503849230570165867, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+  m_PrefabInstance: {fileID: 1789337380}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d7fb968d2bef846cb7d4a043afcf816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMeleeWeapon
 --- !u!1 &975248875
 GameObject:
   m_ObjectHideFlags: 0
@@ -6829,7 +7032,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3570407888808219100, guid: e0daa521dd418c3d395417c59ad22f88, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -108.94071
+      value: -106.24
       objectReference: {fileID: 0}
     - target: {fileID: 3570407888808219100, guid: e0daa521dd418c3d395417c59ad22f88, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6871,13 +7074,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5633160757785042876, guid: e0daa521dd418c3d395417c59ad22f88, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616351508359735373, guid: e0daa521dd418c3d395417c59ad22f88, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b6ed37e677ef8934786228b7e06755f5, type: 2}
     - target: {fileID: 7906187472480602843, guid: e0daa521dd418c3d395417c59ad22f88, type: 3}
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8589400435184616489, guid: e0daa521dd418c3d395417c59ad22f88, type: 3}
       propertyPath: maxHealth
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8639516272657408196, guid: e0daa521dd418c3d395417c59ad22f88, type: 3}
       propertyPath: _sword
@@ -7420,6 +7631,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2481032483856275552, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2508494032562117025, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 691441270}
+    - target: {fileID: 2508494032562117025, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 316304268}
     - target: {fileID: 2538089436301500841, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -7600,6 +7823,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059902707}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1060757262 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6503849230570165867, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+  m_PrefabInstance: {fileID: 1838589690}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d7fb968d2bef846cb7d4a043afcf816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMeleeWeapon
 --- !u!114 &1066990581 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4664191969524176836, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
@@ -8199,6 +8433,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1515ff55d76f1cf48bbb174e22a0b9e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
+--- !u!95 &1091322008 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7400768067249312760, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+  m_PrefabInstance: {fileID: 179362640}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1109700507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8263,6 +8502,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2481032483856275552, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 2538089436301500841, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -8295,6 +8538,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1515ff55d76f1cf48bbb174e22a0b9e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
+--- !u!95 &1117531738 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7400768067249312760, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+  m_PrefabInstance: {fileID: 1838589690}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1128036504
 GameObject:
   m_ObjectHideFlags: 0
@@ -8407,6 +8655,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1128036504}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1139837779 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6503849230570165867, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+  m_PrefabInstance: {fileID: 179362640}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d7fb968d2bef846cb7d4a043afcf816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMeleeWeapon
 --- !u!1001 &1144776796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8470,6 +8729,10 @@ PrefabInstance:
     - target: {fileID: 2481032483856275552, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481032483856275552, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2538089436301500841, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
       propertyPath: m_Layer
@@ -9899,6 +10162,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2481032483856275552, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 2538089436301500841, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -10259,7 +10526,7 @@ GameObject:
   - component: {fileID: 1328433503}
   m_Layer: 0
   m_Name: Enemies
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13048,6 +13315,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1515ff55d76f1cf48bbb174e22a0b9e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
+--- !u!95 &1656195392 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7400768067249312760, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+  m_PrefabInstance: {fileID: 556663321}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1658250209 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4664191969524176836, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
@@ -13059,6 +13331,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1515ff55d76f1cf48bbb174e22a0b9e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
+--- !u!95 &1658250210 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7400768067249312760, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+  m_PrefabInstance: {fileID: 219688348}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1694914500 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4664191969524176836, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
@@ -13289,6 +13566,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1515ff55d76f1cf48bbb174e22a0b9e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
+--- !u!95 &1741618077 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7400768067249312760, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+  m_PrefabInstance: {fileID: 1789337380}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1789337380
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13357,6 +13639,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2481032483856275552, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2508494032562117025, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 942825283}
+    - target: {fileID: 2508494032562117025, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 1741618077}
     - target: {fileID: 2538089436301500841, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -13875,6 +14169,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2481032483856275552, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2508494032562117025, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 1060757262}
+    - target: {fileID: 2508494032562117025, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 1117531738}
     - target: {fileID: 2538089436301500841, guid: ac43ab444313335b1be586893db9f5ea, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -14268,6 +14574,10 @@ PrefabInstance:
     - target: {fileID: 2481032483856275552, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481032483856275552, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2538089436301500841, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
       propertyPath: m_Layer
@@ -15919,6 +16229,10 @@ PrefabInstance:
     - target: {fileID: 2481032483856275552, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481032483856275552, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2538089436301500841, guid: defc21ab7838e3e45badaa8842cc86a5, type: 3}
       propertyPath: m_Layer

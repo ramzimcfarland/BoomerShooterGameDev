@@ -19,12 +19,16 @@ public static class ArenaManager
             //OnGameWin?.Invoke();
             UIScreenManager.Instance?.HandleGameWin();
             Debug.Log($"Game Won!");
+            SoundManager.StopMusic();
+            SoundManager.PlaySound(SoundType.WINGAME);
         }
         else
         {
             Debug.Log($"Cleared arena {currentArena - 1}!");
             //OnArenaCleared?.Invoke();
             UIScreenManager.Instance?.HandleArenaCleared();
+            SoundManager.StopMusic();
+            SoundManager.PlaySound(SoundType.WINLEVEL);
         }
     }
 

@@ -31,9 +31,11 @@ public class Health : MonoBehaviour, IDamageable
         OnDamageTaken?.Invoke(damage);
         OnHealthChanged?.Invoke(_currentHealth, maxHealth);
 
-        if(gameObject.CompareTag("Player"))
+        if (gameObject.CompareTag("Player"))
+        {
             HUDManager.Instance?.UpdateHealth(_currentHealth);
             SoundManager.PlaySound(SoundType.PLAYERHIT);
+        }
         if (gameObject.CompareTag("Enemy"))
         {
             if(damageType == DamageType.Melee)
