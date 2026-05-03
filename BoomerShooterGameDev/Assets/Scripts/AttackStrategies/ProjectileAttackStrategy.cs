@@ -25,6 +25,7 @@ public class ProjectileAttackStrategy : IAttackStrategy
 
         projectile.GetComponent<Orb>().Init(_damage);
 
+        Debug.Log("shooting with projectile!");
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         rb.linearVelocity = forward * _travelSpeed;
 

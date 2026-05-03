@@ -14,11 +14,9 @@ GameObject:
   - component: {fileID: 3191636348787559334}
   - component: {fileID: 5728836832055497916}
   - component: {fileID: 370477210076835894}
-  - component: {fileID: 43970098178568265}
   - component: {fileID: 7400768067249312760}
   - component: {fileID: 4664191969524176836}
   - component: {fileID: 6056024283459013942}
-  - component: {fileID: 8562405236507163322}
   - component: {fileID: 5874940913263832918}
   - component: {fileID: 4737462934811314619}
   - component: {fileID: 70176537456895127}
@@ -159,18 +157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a352d4e5ec955d74ca0646cd4229d762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
---- !u!114 &43970098178568265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2302169302924666262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d94e7efba5da224793e29c9bb8f8890, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ClickToMove
 --- !u!95 &7400768067249312760
 Animator:
   serializedVersion: 7
@@ -206,14 +192,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   currentState: 0
-  _weapon: {fileID: 8562405236507163322}
+  _weapon: {fileID: 5900378876210500494}
   player: {fileID: 0}
   alertRange: 20
   sightRange: 10
   attackRange: 10
   moveSpeed: 4
   isActive: 1
-  attackCooldown: 1.5
+  _enemyFireRate: 0.5
 --- !u!54 &6056024283459013942
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -241,28 +227,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &8562405236507163322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2302169302924666262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a54dc2ff7d16551eb15e8aa260708b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyOrbWeapon
-  _muzzleTransform: {fileID: 7286495454299199064}
-  _fireRate: 10
-  _damage: 10
-  _magazineSize: 5
-  _reloadTime: 2
-  _maxInventoryAmmo: 90
-  _projectilePrefab: {fileID: 6618981301091044701, guid: 69e7208dd51d7d4d5a8a3449830bd00a, type: 3}
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!114 &5874940913263832918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +316,7 @@ GameObject:
   - component: {fileID: 4061252706797807642}
   - component: {fileID: 2871959400314544260}
   - component: {fileID: 7110808363140385023}
+  - component: {fileID: 5900378876210500494}
   m_Layer: 0
   m_Name: EnemyWeapon
   m_TagString: Untagged
@@ -453,6 +418,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5900378876210500494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538089436301500841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a54dc2ff7d16551eb15e8aa260708b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyOrbWeapon
+  _muzzleTransform: {fileID: 7286495454299199064}
+  _fireRate: 1
+  _damage: 10
+  _magazineSize: 30
+  _reloadTime: 2
+  _maxInventoryAmmo: 90
+  _projectilePrefab: {fileID: 6618981301091044701, guid: 69e7208dd51d7d4d5a8a3449830bd00a, type: 3}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &7297931118731103546
 GameObject:
   m_ObjectHideFlags: 0

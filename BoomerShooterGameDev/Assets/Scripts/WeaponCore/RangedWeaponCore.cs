@@ -18,22 +18,25 @@ public abstract class RangedWeaponCore : WeaponCore
     public event Action OnReloadStart;
     public event Action OnReloadComplete;
 
+    private bool IsPlayerWeapon => GetComponentInParent<PlayerMovement>() != null;
+
+
     protected virtual void Awake()
     {
         AmmoInMagazine = _magazineSize;
         AmmoInventory = _maxInventoryAmmo/2;
     }
 
-private bool IsPlayerWeapon => GetComponentInParent<PlayerMovement>() != null;
-
     public override void TryFire()
     {
+        Debug.Log("Trying to fire");
         if (IsReloading || AmmoInMagazine <= 0) return;
         if (Time.time < _nextFireTime) return;
 
         base.TryFire();
         AmmoInMagazine--;
-        
+        Debug.Log("fired");
+
         OnAmmoChanged?.Invoke();
         
         // update the ui for player's ammo only
@@ -43,7 +46,7 @@ private bool IsPlayerWeapon => GetComponentInParent<PlayerMovement>() != null;
         if (AmmoInMagazine == 0)
             StartCoroutine(ReloadRoutine());
     }
-
+    
     public void TryReload()
     {
         if (!IsReloading && AmmoInMagazine < _magazineSize && AmmoInventory > 0)
@@ -59,8 +62,10 @@ private bool IsPlayerWeapon => GetComponentInParent<PlayerMovement>() != null;
         yield return new WaitForSeconds(_reloadTime);
 
         // AmmoInMagazine = _magazineSize; // infinite ammo
-
-        AmmoInMagazine = ReloadAmmo();
+        if (IsPlayerWeapon)
+            AmmoInMagazine = ReloadAmmo();
+        else
+            AmmoInMagazine = _magazineSize;
 
         IsReloading    = false;
         OnAmmoChanged?.Invoke();
