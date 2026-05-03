@@ -16,6 +16,9 @@ public class EnemyAI : MonoBehaviour
     public float attackRange = 2f; 
     public float moveSpeed = 4f; 
     public bool isActive = false; // set to true with trigger (player enters arena or something)
+    private float _nextEnemyFireTime = 0f;
+    [SerializeField] private float _enemyFireRate = 0.5f; // change per enemy type
+
 
 
     //offset for enemies chasing player
@@ -27,6 +30,8 @@ public class EnemyAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 
         offset = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
+
+        _weapon.Equip();
     }
 
     void Update()
@@ -117,21 +122,28 @@ public class EnemyAI : MonoBehaviour
         }
         if (CanSeePlayer())
         {
+            // Debug.Log("Attacking player!");
             currentState = EnemyState.Attack;
             
-            if (_weapon is RangedWeaponCore)
+            if (_weapon is RangedWeaponCore ranged)
             {
+                if (ranged.IsReloading) return;
                 Aim();
             }
 
             _weapon.TryFire();
+            
+            // if (Time.time >= _nextEnemyFireTime)
+            // {
+            //     _nextEnemyFireTime = Time.time + _enemyFireRate;
+            //     _weapon.TryFire();
+            // }
+
         }
-
-            else
-            {
-                currentState = EnemyState.Chase;
-            }
-
+        else
+        {
+            currentState = EnemyState.Chase;
+        }
     }
     void Aim() //rotate the MuzzleTransform to be pointing in the direciton of player
     //Used before firing

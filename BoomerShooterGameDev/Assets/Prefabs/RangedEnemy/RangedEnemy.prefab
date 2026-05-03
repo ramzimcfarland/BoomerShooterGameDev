@@ -192,13 +192,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   currentState: 0
-  _weapon: {fileID: 8916963264398029273}
+  _weapon: {fileID: 5900378876210500494}
   player: {fileID: 0}
   alertRange: 20
   sightRange: 10
   attackRange: 10
   moveSpeed: 4
   isActive: 1
+  _enemyFireRate: 0.5
 --- !u!54 &6056024283459013942
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -315,7 +316,7 @@ GameObject:
   - component: {fileID: 4061252706797807642}
   - component: {fileID: 2871959400314544260}
   - component: {fileID: 7110808363140385023}
-  - component: {fileID: 8916963264398029273}
+  - component: {fileID: 5900378876210500494}
   m_Layer: 0
   m_Name: EnemyWeapon
   m_TagString: Untagged
@@ -417,7 +418,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8916963264398029273
+--- !u!114 &5900378876210500494
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -430,11 +431,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyOrbWeapon
   _muzzleTransform: {fileID: 7286495454299199064}
-  _fireRate: 10
+  _fireRate: 1
   _damage: 10
   _magazineSize: 30
   _reloadTime: 2
-  _maxInventoryAmmo: 1000000
+  _maxInventoryAmmo: 90
   _projectilePrefab: {fileID: 6618981301091044701, guid: 69e7208dd51d7d4d5a8a3449830bd00a, type: 3}
   _layerMask:
     serializedVersion: 2
