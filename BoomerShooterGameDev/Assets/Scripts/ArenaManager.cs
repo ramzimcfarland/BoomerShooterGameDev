@@ -3,7 +3,7 @@ using System;
 public static class ArenaManager
 {
     public static int currentArena = 1;
-    public static int maxArena = 1;
+    public static int maxArena = 3;
 
     // public static event Action OnArenaCleared;
     // public static event Action OnGameWin;

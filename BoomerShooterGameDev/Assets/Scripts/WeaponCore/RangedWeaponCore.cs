@@ -29,13 +29,11 @@ public abstract class RangedWeaponCore : WeaponCore
 
     public override void TryFire()
     {
-        Debug.Log("Trying to fire");
         if (IsReloading || AmmoInMagazine <= 0) return;
         if (Time.time < _nextFireTime) return;
 
         base.TryFire();
         AmmoInMagazine--;
-        Debug.Log("fired");
 
         OnAmmoChanged?.Invoke();
         

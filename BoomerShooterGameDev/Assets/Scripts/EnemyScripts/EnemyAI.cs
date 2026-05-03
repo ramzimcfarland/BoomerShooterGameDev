@@ -16,8 +16,6 @@ public class EnemyAI : MonoBehaviour
     public float attackRange = 2f; 
     public float moveSpeed = 4f; 
     public bool isActive = false; // set to true with trigger (player enters arena or something)
-    private float _nextEnemyFireTime = 0f;
-    [SerializeField] private float _enemyFireRate = 0.5f; // change per enemy type
 
 
 
@@ -122,7 +120,6 @@ public class EnemyAI : MonoBehaviour
         }
         if (CanSeePlayer())
         {
-            // Debug.Log("Attacking player!");
             currentState = EnemyState.Attack;
             
             if (_weapon is RangedWeaponCore ranged)
@@ -132,13 +129,7 @@ public class EnemyAI : MonoBehaviour
             }
 
             _weapon.TryFire();
-            
-            // if (Time.time >= _nextEnemyFireTime)
-            // {
-            //     _nextEnemyFireTime = Time.time + _enemyFireRate;
-            //     _weapon.TryFire();
-            // }
-
+        
         }
         else
         {

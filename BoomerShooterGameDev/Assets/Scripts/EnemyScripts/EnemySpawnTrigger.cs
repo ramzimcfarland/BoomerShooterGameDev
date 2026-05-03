@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SpawnTrigger : MonoBehaviour
 {
-    public EnemySpawner[] spawners; // hook up in inspector
+    public EnemySpawner[] spawners; 
 
     void OnTriggerEnter(Collider other)
     {
