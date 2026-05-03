@@ -21,14 +21,17 @@ public class DoorController : MonoBehaviour
         SoundManager.PlayMusic(MusicType.WAITINGROOM);
         isOpen = openAtStart;
 
+        //set closed and open positions
         closedPosition = new Vector3(transform.localPosition.x, transform.localPosition.y - closedYOffset, transform.localPosition.z);
         openPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + openYOffset, transform.localPosition.z);
 
+        // set door to correct position
         transform.localPosition = openAtStart ? openPosition : closedPosition;
     }
 
     public void CloseDoor()
     {
+        //start door closing animation then start sfx and music
         if (!isAnimating)
             StartCoroutine(AnimateDoor(closedPosition));
             SoundManager.PlaySound(SoundType.DOORBOOM);
@@ -37,6 +40,7 @@ public class DoorController : MonoBehaviour
         isOpen = false;
     }
 
+    //for future implementation of opening doors
     public void OpenDoor()
     {
         if (!isAnimating)
@@ -44,6 +48,7 @@ public class DoorController : MonoBehaviour
         isOpen = true;
     }
 
+    // coroutine to animate door
     private IEnumerator AnimateDoor(Vector3 targetPosition)
     {
         isAnimating = true;

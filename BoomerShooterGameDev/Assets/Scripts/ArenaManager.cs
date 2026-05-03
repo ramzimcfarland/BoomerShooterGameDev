@@ -7,12 +7,10 @@ public static class ArenaManager
 
     [SerializeField]private static LightTrigger lightTrigger;
 
-    // public static event Action OnArenaCleared;
-    // public static event Action OnGameWin;
-
     public static void ClearArena()
     {
         currentArena++;
+        //win game
         if (LightTrigger.isTriggered)
         {
             Debug.Log("won!");
@@ -22,6 +20,7 @@ public static class ArenaManager
             SoundManager.StopMusic();
             SoundManager.PlaySound(SoundType.WINGAME);
         }
+        // clear arena but not win game
         else if (currentArena <= maxArena)
         {
             Debug.Log($"Cleared arena {currentArena - 1}!");

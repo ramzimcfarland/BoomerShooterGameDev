@@ -1,3 +1,4 @@
+// for enemy dropping health and ammo pickups after death
 using UnityEngine;
 
 public class DropHandler : MonoBehaviour
