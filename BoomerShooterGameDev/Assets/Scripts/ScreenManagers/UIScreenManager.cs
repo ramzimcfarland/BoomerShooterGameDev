@@ -1,3 +1,4 @@
+// slight Claude AI help in writing this script
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,7 @@ public class UIScreenManager : MonoBehaviour
 
     public static UIScreenManager Instance;
 
+    // all of the screens
    [Header("Pause")]
    [SerializeField] private GameObject pausePanel;
 

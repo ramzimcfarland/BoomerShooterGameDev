@@ -53,6 +53,7 @@ public class EnemyAI : MonoBehaviour
         SoundManager.PlaySound(SoundType.ENEMYACTIVATION);
     }
 
+    // check if player is in line of sight
     bool CanSeePlayer()
     {
         Vector3 eyeHeight = transform.position + Vector3.up * 1f; // adjust height
@@ -64,7 +65,7 @@ public class EnemyAI : MonoBehaviour
             return false;
     }
 
-
+    //idle state
     void HandleIdle(float dist)
     {
         if (!isActive) return;
@@ -81,6 +82,7 @@ public class EnemyAI : MonoBehaviour
 
     }
 
+    //chase state
     void HandleChase(float dist)
     {
 
@@ -91,23 +93,12 @@ public class EnemyAI : MonoBehaviour
         if (agent.isOnNavMesh)
             agent.SetDestination(destination);
 
-        //for if we want to have enemies that only chase if they can see the player, but it can lead to weird behavior where they get stuck on geometry and can't find a path to the player
-        // if (CanSeePlayer())
-        // {   
-        //     Vector3 destination = player.position + offset;
-        //     agent.SetDestination(destination);
-        // }
-
-        // if (player != null)
-        // {
-        //     agent.SetDestination(player.position);
-        // }
-
         // if player is close, attack
          if (dist < attackRange)
             currentState = EnemyState.Attack;
     }
 
+    //attack state
     void HandleAttack(float dist)
     {
         if (agent.isOnNavMesh)

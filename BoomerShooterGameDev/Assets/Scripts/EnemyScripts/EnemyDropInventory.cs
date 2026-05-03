@@ -1,3 +1,4 @@
+// items for enemies to drop upon death
 using UnityEngine;
 using System;
 
@@ -9,7 +10,7 @@ public class EnemyDropInventory : MonoBehaviour
     public class DropEntry
     {
         public GameObject itemPrefab;
-        [Range(0f, 1f)] public float chance;
+        [Range(0f, 1f)] public float chance; // chance of the item dropping
     }
 
 }

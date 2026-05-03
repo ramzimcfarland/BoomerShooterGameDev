@@ -1,4 +1,4 @@
-// This script was written based off of this Youtube tutorial: https://www.youtube.com/watch?v=Mcs7Ykxe6Ko
+// script written at the first development, no used much in our implementation
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,9 +6,7 @@ public class Enemy : MonoBehaviour
 {
     private EnemyManager enemyManager;
     private Health _health;
-
     private Animator animator;
-
     private NavMeshAgent navAgent;
 
     private void Awake()
@@ -32,7 +30,6 @@ public class Enemy : MonoBehaviour
     private void HandleDeath()
     {
         enemyManager?.HandleEnemyDeath();
-        Debug.Log("Enemy died!");
     }
 
     private void Start()
@@ -41,22 +38,6 @@ public class Enemy : MonoBehaviour
         navAgent = GetComponent<NavMeshAgent>();
     }
 
-    // public void TakeDamage(int damage)
-    // {
-    //     health -= damage;
-
-    //     if (health <= 0)
-    //     {
-    //         animator.SetTrigger("Die");
-    //         Debug.Log("DIED");
-    //         Destroy(gameObject, 2f);
-    //     }
-    //     else
-    //     {
-    //         animator.SetTrigger("Hit");
-    //         Debug.Log("HIT");
-    //     }
-    // }
 
     private void Update()
     {

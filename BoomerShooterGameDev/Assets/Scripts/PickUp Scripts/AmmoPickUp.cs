@@ -11,6 +11,5 @@ public class AmmoPickUp : PickUpBase
         if (weapon == null) return;
         
         weapon.AddAmmoToInventory(ammoAmount);
-        Debug.Log("picked up ammo");
     }
 }

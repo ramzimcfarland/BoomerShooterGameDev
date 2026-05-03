@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class LightTrigger : MonoBehaviour
 {
+    // trigger when walk into the light at last level
     public static bool isTriggered = false;
     void OnTriggerEnter(Collider other)
     {

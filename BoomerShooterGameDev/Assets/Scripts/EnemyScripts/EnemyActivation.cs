@@ -1,22 +1,22 @@
 // assisted by Claude AI
+// used to activate enemies after player has left the waiting room
 using System.Collections;
 using UnityEngine;
 
 public class EnemyActivation : MonoBehaviour
 {
-    public EnemyAI[] enemies;        // drag your scene enemies in here
+    // all enemies that should be activated at the start of level
+    public EnemyAI[] enemies;        
     public float activationDelay = 3f;
 
      void Start()
     {
         enemies = FindObjectsByType<EnemyAI>(FindObjectsSortMode.None);
-        Debug.Log("Found " + enemies.Length + " enemies");
     }
 
     void OnEnable()
     {
         DoorTrigger.OnPlayerEnter += StartLevel;
-        Debug.Log("EnemyActivation subscribed on: " + gameObject.name + " with " + enemies.Length + " enemies");
     }
 
     void OnDisable()
@@ -26,20 +26,17 @@ public class EnemyActivation : MonoBehaviour
 
     void StartLevel()
     {
-        Debug.Log("StartLevel called");
         StartCoroutine(ActivateAfterDelay());
     }
 
     IEnumerator ActivateAfterDelay()
     {
-        Debug.Log("Waiting " + activationDelay + " seconds");
+        // a few seconds buffer for door to close / to allow player to adjust
         yield return new WaitForSeconds(activationDelay);
-        Debug.Log("Activating " + enemies.Length + " enemies");
 
-
+        //activate enemies
         foreach (var enemy in enemies)
         {
-            Debug.Log("Activating: " + enemy.name);
             enemy.Activate();
         }
     }

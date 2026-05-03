@@ -9,7 +9,7 @@ public class SpawnTrigger : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        Debug.Log("spawn triggered!");
+
         foreach (var spawner in spawners)
             spawner.Spawn();
 

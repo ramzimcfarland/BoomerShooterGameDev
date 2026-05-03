@@ -1,3 +1,4 @@
+// base class for pickupable objects
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))] // makes sure there is a collider
