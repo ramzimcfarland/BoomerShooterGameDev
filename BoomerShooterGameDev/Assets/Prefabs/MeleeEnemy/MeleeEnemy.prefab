@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5706645034951932751}
   - component: {fileID: 6503849230570165867}
   - component: {fileID: 7049211901981667056}
-  - component: {fileID: 6536201796624932453}
   m_Layer: 3
   m_Name: EnemyMeleeWeapon
   m_TagString: Untagged
@@ -130,7 +129,6 @@ MonoBehaviour:
   _muzzleTransform: {fileID: 0}
   _fireRate: 10
   _damage: 10
-  _animator: {fileID: 7400768067249312760}
   _attackCooldown: 0.5
   _hitMask:
     serializedVersion: 2
@@ -148,20 +146,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeHitDetector
   _weapon: {fileID: 6503849230570165867}
---- !u!114 &6536201796624932453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 783894948857416005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e36874d73d7112e28878a355e307977, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SwordView
-  _sword: {fileID: 0}
-  _animator: {fileID: 0}
 --- !u!1 &2302169302924666262
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,11 +160,11 @@ GameObject:
   - component: {fileID: 3191636348787559334}
   - component: {fileID: 5728836832055497916}
   - component: {fileID: 370477210076835894}
-  - component: {fileID: 43970098178568265}
   - component: {fileID: 7400768067249312760}
   - component: {fileID: 4664191969524176836}
   - component: {fileID: 6056024283459013942}
   - component: {fileID: 5874940913263832918}
+  - component: {fileID: 4604283396208456298}
   m_Layer: 0
   m_Name: CapsuleEnemy
   m_TagString: Enemy
@@ -319,18 +303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a352d4e5ec955d74ca0646cd4229d762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
---- !u!114 &43970098178568265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2302169302924666262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d94e7efba5da224793e29c9bb8f8890, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ClickToMove
 --- !u!95 &7400768067249312760
 Animator:
   serializedVersion: 7
@@ -341,7 +313,7 @@ Animator:
   m_GameObject: {fileID: 2302169302924666262}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 32de2c65732690146994bc190c54a9b4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7d4df50c5b47d8ff09a9837f613fbafd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -373,7 +345,7 @@ MonoBehaviour:
   attackRange: 3
   moveSpeed: 4
   isActive: 1
-  attackCooldown: 1.5
+  _enemyFireRate: 0.5
 --- !u!54 &6056024283459013942
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -415,6 +387,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health
   maxHealth: 100
   destroyOnDeath: 1
+--- !u!114 &4604283396208456298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2302169302924666262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc2bc2ba4a4d5df6a8bbf28591e2667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeleeHitDetector
+  _weapon: {fileID: 6503849230570165867}
 --- !u!1 &2481032483856275552
 GameObject:
   m_ObjectHideFlags: 0
