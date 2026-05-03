@@ -22,7 +22,7 @@ public static class ArenaManager
             SoundManager.StopMusic();
             SoundManager.PlaySound(SoundType.WINGAME);
         }
-        else
+        else if (currentArena <= maxArena)
         {
             Debug.Log($"Cleared arena {currentArena - 1}!");
             //OnArenaCleared?.Invoke();
