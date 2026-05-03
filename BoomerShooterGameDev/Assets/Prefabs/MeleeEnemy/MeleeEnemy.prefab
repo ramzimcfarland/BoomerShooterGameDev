@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5706645034951932751}
   - component: {fileID: 6503849230570165867}
   - component: {fileID: 7049211901981667056}
-  - component: {fileID: 2094973259834707293}
   m_Layer: 3
   m_Name: EnemyMeleeWeapon
   m_TagString: Untagged
@@ -147,20 +146,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeHitDetector
   _weapon: {fileID: 6503849230570165867}
---- !u!114 &2094973259834707293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 783894948857416005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca6f66a44b808a4e905c9eac404759e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMeleeWeaponView
-  _weapon: {fileID: 6503849230570165867}
-  _animator: {fileID: 7400768067249312760}
 --- !u!1 &2302169302924666262
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +164,7 @@ GameObject:
   - component: {fileID: 4664191969524176836}
   - component: {fileID: 6056024283459013942}
   - component: {fileID: 5874940913263832918}
+  - component: {fileID: 4604283396208456298}
   m_Layer: 0
   m_Name: CapsuleEnemy
   m_TagString: Enemy
@@ -327,7 +313,7 @@ Animator:
   m_GameObject: {fileID: 2302169302924666262}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 32de2c65732690146994bc190c54a9b4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7d4df50c5b47d8ff09a9837f613fbafd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -359,6 +345,7 @@ MonoBehaviour:
   attackRange: 3
   moveSpeed: 4
   isActive: 1
+  _enemyFireRate: 0.5
 --- !u!54 &6056024283459013942
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -400,6 +387,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health
   maxHealth: 100
   destroyOnDeath: 1
+--- !u!114 &4604283396208456298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2302169302924666262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc2bc2ba4a4d5df6a8bbf28591e2667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeleeHitDetector
+  _weapon: {fileID: 6503849230570165867}
 --- !u!1 &2481032483856275552
 GameObject:
   m_ObjectHideFlags: 0
