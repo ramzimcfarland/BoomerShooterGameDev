@@ -1,4 +1,4 @@
-//This script was made using AI
+//This script was made using AI and forums
 using UnityEngine;
 using System;
 
@@ -6,8 +6,6 @@ public class Health : MonoBehaviour, IDamageable
 {
     [SerializeField] private float maxHealth = 100f;
     [SerializeField] private bool destroyOnDeath = false;
-
-    
     public event Action OnDeath;
     public event Action<float> OnDamageTaken;
     public event Action<float, float> OnHealthChanged;
@@ -25,7 +23,7 @@ public class Health : MonoBehaviour, IDamageable
         _currentHealth = maxHealth;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, DamageType damageType)
     {
         if (_isDead || damage <= 0f) return;
 
@@ -34,7 +32,19 @@ public class Health : MonoBehaviour, IDamageable
         OnHealthChanged?.Invoke(_currentHealth, maxHealth);
 
         if(gameObject.CompareTag("Player"))
-            HUDManager.Instance?.UpdateHealth(_currentHealth); 
+            HUDManager.Instance?.UpdateHealth(_currentHealth);
+            SoundManager.PlaySound(SoundType.PLAYERHIT);
+        if (gameObject.CompareTag("Enemy"))
+        {
+            if(damageType == DamageType.Melee)
+            {
+                SoundManager.PlaySound(SoundType.SWORDHIT);
+            }
+            if(damageType == DamageType.Ranged)
+            {
+                SoundManager.PlaySound(SoundType.BULLETHIT);
+            }
+        } 
 
         Debug.Log($"{gameObject} took {damage} damage!");
 
@@ -44,6 +54,11 @@ public class Health : MonoBehaviour, IDamageable
             Die();
             if(gameObject.CompareTag("Player"))
                 UIScreenManager.Instance?.HandlePlayerDeath();
+                SoundManager.PlaySound(SoundType.LOSEGAME);
+            if (gameObject.CompareTag("Enemy"))
+            {
+                SoundManager.PlaySound(SoundType.ENEMYDEATH);
+            }
                 
         }
     }
@@ -73,5 +88,4 @@ public class Health : MonoBehaviour, IDamageable
 
         if (destroyOnDeath) Destroy(gameObject);
     }
-    
 }

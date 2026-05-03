@@ -34,14 +34,14 @@ public class WeaponCore : MonoBehaviour
         OnFire?.Invoke();
     }
     public void RaiseOnFire() => OnFire?.Invoke();
-    public void Equip()
+    public virtual void Equip()
     {
         IsEquipped = true;
         gameObject.SetActive(true);
         OnEquip?.Invoke();
     }
 
-    public void Unequip()
+    public virtual void Unequip()
     {
         IsEquipped = false;
         gameObject.SetActive(false);

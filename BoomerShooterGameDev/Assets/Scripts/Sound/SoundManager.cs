@@ -2,10 +2,21 @@
 using UnityEngine;
 using System;
 public enum SoundType
-{
+{   
     SWORD,
     SHOTGUNBLAST,
     SHOTGUNCOCK,
+    DOORBOOM,
+    DOORCLOSING,
+    ENEMYDEATH,
+    WINGAME,
+    WINLEVEL,
+    LOSEGAME,
+    BULLETHIT,
+    SWORDHIT,
+    ENEMYRANGEDATTACK,
+    ENEMYACTIVATION,
+    PLAYERHIT,
 }
 [RequireComponent(typeof(AudioSource)), ExecuteInEditMode]
 public class SoundManager : MonoBehaviour
