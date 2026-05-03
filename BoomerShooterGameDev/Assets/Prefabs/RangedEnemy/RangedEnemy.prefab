@@ -199,7 +199,6 @@ MonoBehaviour:
   attackRange: 10
   moveSpeed: 4
   isActive: 1
-  _enemyFireRate: 0.5
 --- !u!54 &6056024283459013942
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -271,7 +270,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 3960841245437731209, guid: 794a9a6730cae804297a4f8e1d94acc1, type: 3}
     chance: 0.6
   - itemPrefab: {fileID: 5992015642152107859, guid: 1274475a1067bb649bcb6303f4394712, type: 3}
-    chance: 0.3
+    chance: 0.7
 --- !u!1 &2481032483856275552
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,6 +439,8 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  travelSpeed: 4
+  projectileLifetime: 3
 --- !u!1 &7297931118731103546
 GameObject:
   m_ObjectHideFlags: 0
