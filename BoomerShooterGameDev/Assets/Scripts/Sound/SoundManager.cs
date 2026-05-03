@@ -1,6 +1,11 @@
 //made using a youtube tutorial!
 using UnityEngine;
 using System;
+public enum MusicType
+{
+    WAITINGROOM,
+    GAMEPLAY
+}
 public enum SoundType
 {   
     SWORD,
@@ -22,12 +27,17 @@ public enum SoundType
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] private SoundList[] soundList;
+    [SerializeField] private AudioClip[] musicList;
     private static SoundManager instance;
     private AudioSource audioSource;
+    private AudioSource musicSource;
 
     private void Awake()
     {
         instance = this;
+        musicSource = gameObject.AddComponent<AudioSource>();
+        musicSource.loop = true;
+        
     }
     private void Start()
     {
@@ -50,6 +60,22 @@ public class SoundManager : MonoBehaviour
         }
     }
     #endif
+public static void PlayMusic(MusicType music, float volume = 0.5f)
+{
+    instance.musicSource.clip = instance.musicList[(int)music];
+    instance.musicSource.volume = volume;
+    instance.musicSource.Play();
+}
+
+public static void StopMusic()
+{
+    instance.musicSource.Stop();
+}
+
+public static void SetMusicVolume(float volume)
+{
+    instance.musicSource.volume = volume;
+}
 }
 [Serializable]
 public struct SoundList
