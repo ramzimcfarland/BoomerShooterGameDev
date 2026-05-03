@@ -1,5 +1,5 @@
 //forums helped me to understand important things such as locking the x-rotation and what
-//a "normal feeling sensitivity would be
+//a "normal feeling" sensitivity would be
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,7 +21,7 @@ public class CameraController : MonoBehaviour
         Vector2 look = lookInput * sensitivity;
 
         xRotation -= look.y;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f); //cannot look more than over your head or under your legs
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 

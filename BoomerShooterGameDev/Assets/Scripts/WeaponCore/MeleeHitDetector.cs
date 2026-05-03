@@ -1,3 +1,4 @@
+//This script handles the damage for all melee weapons
 using UnityEngine;
 
 public class MeleeHitDetector : MonoBehaviour

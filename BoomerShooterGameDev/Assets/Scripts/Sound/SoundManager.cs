@@ -1,6 +1,7 @@
 //made using a youtube tutorial!
 using UnityEngine;
 using System;
+//Enums for readability
 public enum MusicType
 {
     WAITINGROOM,
@@ -26,6 +27,7 @@ public enum SoundType
 [RequireComponent(typeof(AudioSource)), ExecuteInEditMode]
 public class SoundManager : MonoBehaviour
 {
+    //Two audio sources and arrays to handle music versus sounds
     [SerializeField] private SoundList[] soundList;
     [SerializeField] private AudioClip[] musicList;
     private static SoundManager instance;

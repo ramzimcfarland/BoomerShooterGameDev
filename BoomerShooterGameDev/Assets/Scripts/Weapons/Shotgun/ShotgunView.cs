@@ -1,3 +1,4 @@
+//Meant to control any SFX with the shotgun
 using System.Collections;
 using UnityEngine;
 

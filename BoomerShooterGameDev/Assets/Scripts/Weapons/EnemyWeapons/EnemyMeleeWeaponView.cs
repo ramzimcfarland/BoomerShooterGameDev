@@ -1,3 +1,4 @@
+//Primary functionality is telling the animator to begin the attack animation
 using UnityEngine;
 
 public class EnemyMeleeWeaponView : MonoBehaviour

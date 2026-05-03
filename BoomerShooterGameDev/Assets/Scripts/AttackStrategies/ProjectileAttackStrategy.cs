@@ -17,6 +17,7 @@ public class ProjectileAttackStrategy : IAttackStrategy
     public bool CanAttack() => true;
     public void Execute(WeaponCore weapon)
     {
+        //Instatiate the projectile and launch it!
         var origin = weapon.MuzzleTransform.position;
         var forward = weapon.MuzzleTransform.forward;
 
@@ -25,7 +26,6 @@ public class ProjectileAttackStrategy : IAttackStrategy
 
         projectile.GetComponent<Orb>().Init(_damage);
 
-        Debug.Log("shooting with projectile!");
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         rb.linearVelocity = forward * _travelSpeed;
 
